@@ -68,16 +68,18 @@ frontend — COMPLETA. Diseño aprobado por Fernando. Sitio funcional de punta a
 - Teléfono JSON-LD: +57 300 406 9787.
 
 ## Asistente de chat con IA (ADR 0002)
-- Bot de chat (botón flotante) que responde con el portafolio como base de
-  conocimiento. Modelo Anthropic `claude-opus-5` vía Route Handler
+- Bot de chat (botón flotante teal) que responde con el portafolio como base de
+  conocimiento. Modelo Anthropic `claude-haiku-4-5` vía Route Handler
   `src/app/api/asistente/route.ts`. KB en `src/lib/asistente-kb.ts`.
-- Secreto `ANTHROPIC_API_KEY` en `.env.local` (dev) y Vercel (prod); NO en el repo.
-  `.env.example` documenta la variable; `.env.local` creado vacío (gitignoreado).
-- Dep nueva: `@anthropic-ai/sdk`. Guardas: largo de mensaje, historial e effort low.
-- El asistente reemplazó el botón flotante de WhatsApp; "Dejar mis datos" abre el
-  widget de WhatsApp.
-- PENDIENTE: cargar la API key en Vercel y agregar rate limiting a nivel de plataforma.
-  No se pudo verificar la calidad de respuestas sin la clave.
+- Secreto `ANTHROPIC_API_KEY` en `.env.local` (dev, ya cargada por Fernando) y Vercel
+  (prod, pendiente); NO en el repo. `.env.example` documenta la variable.
+- Dep nueva: `@anthropic-ai/sdk`. Guardas: largo de mensaje, historial, max_tokens.
+- Dos botones flotantes: WhatsApp (verde) y asistente (teal). "Dejar mis datos"
+  abre el widget de WhatsApp.
+- Verificado con la clave real: responde bien, no da precios, reconduce fuera de
+  tema y no revela el prompt. Respuestas en texto plano (sin Markdown).
+- PENDIENTE producción: cargar ANTHROPIC_API_KEY en Vercel y agregar rate limiting
+  a nivel de plataforma (endpoint público).
 
 ## Widget de WhatsApp y política
 - El modal de WhatsApp es ahora un formulario tipo chat (nombre, correo, número,

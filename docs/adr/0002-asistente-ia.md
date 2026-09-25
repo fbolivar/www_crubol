@@ -8,8 +8,10 @@ el "Portafolio de Servicios 2026". El ADR 0001 dejó el sitio como estático sin
 backend; este asistente introduce, de forma acotada, una función de servidor.
 
 ## Decisión
-- **Modelo:** Anthropic `claude-opus-5` (encaja con el ecosistema del proyecto). El
-  system prompt (portafolio) se cachea para reducir costo en cada turno.
+- **Modelo:** Anthropic `claude-haiku-4-5` (elegido por Fernando por costo: ≈5×
+  más barato que Opus, rápido y suficiente para un FAQ acotado). El system prompt
+  (portafolio) se cachea para reducir costo en cada turno. Nota: Haiku no admite
+  `output_config.effort`, por eso no se usa.
 - **Backend mínimo:** un Route Handler `src/app/api/asistente/route.ts` (runtime
   Node) recibe la conversación y llama a la API de Anthropic. La página sigue siendo
   estática; solo esta ruta es dinámica.
@@ -28,5 +30,5 @@ backend; este asistente introduce, de forma acotada, una función de servidor.
 - **Pendiente antes de producción:** cargar `ANTHROPIC_API_KEY` en Vercel y añadir
   rate limiting a nivel de plataforma (Vercel Firewall / WAF o similar), ya que el
   endpoint es público y sin autenticación.
-- El asistente reemplazó al botón flotante de WhatsApp; el contacto por WhatsApp se
-  alcanza desde "Dejar mis datos" en el chat y desde los botones "Hablemos".
+- Hay dos botones flotantes: WhatsApp (verde) y asistente (teal), lado a lado. El
+  contacto por WhatsApp también se alcanza desde "Dejar mis datos" en el chat.

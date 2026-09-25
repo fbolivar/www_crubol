@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 // Límites para controlar costo y abuso (endpoint público).
 const MAX_MENSAJES = 12; // últimos turnos que se envían al modelo
 const MAX_LARGO_MSG = 1000; // caracteres por mensaje
-const MODELO = "claude-opus-5";
+const MODELO = "claude-haiku-4-5";
 
 type Turno = { role: "user" | "assistant"; content: string };
 
@@ -58,7 +58,6 @@ export async function POST(req: Request) {
     const respuesta = await client.messages.create({
       model: MODELO,
       max_tokens: 600,
-      output_config: { effort: "low" },
       // El system prompt (portafolio) se cachea: repetido en cada turno.
       system: [
         { type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } },

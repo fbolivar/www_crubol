@@ -136,6 +136,17 @@ export function WhatsAppProvider({ children }: { children: ReactNode }) {
     <WhatsAppCtx.Provider value={{ abrir }}>
       {children}
 
+      {/* Botón flotante de WhatsApp (a la izquierda del asistente) */}
+      <button
+        type="button"
+        onClick={abrir}
+        aria-label="Contactar por WhatsApp"
+        className="fixed bottom-5 right-[5.5rem] z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-6px_rgba(37,211,102,0.6)] transition-transform duration-300 ease-marca hover:-translate-y-1"
+      >
+        <span className="absolute inline-flex h-full w-full rounded-full bg-[#25D366]/40 animate-halo" aria-hidden />
+        <IconWhatsApp className="relative h-7 w-7" />
+      </button>
+
       <AnimatePresence>
         {abierto && (
           <motion.div
