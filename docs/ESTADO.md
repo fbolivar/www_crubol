@@ -61,10 +61,19 @@ frontend — COMPLETA. Diseño aprobado por Fernando. Sitio funcional de punta a
 - Deploy en Vercel + dominio `crubol.com.co`.
 - Opcional: auditoría de seguridad de pre-lanzamiento (headers, deps).
 
-## TODO datos de Fernando (marcados en content.ts)
+## Datos ya cargados
+- Correo: info@crubol.com (OJO: el dominio del sitio es crubol.com.co; confirmar
+  si el correo debe ser @crubol.com o @crubol.com.co).
+- WhatsApp: +57 300 406 9787 y +57 321 921 3134. Al contactar se elige uno al azar.
+- Teléfono JSON-LD: +57 300 406 9787.
 
-- Números de WhatsApp reales (comercial Emerson, soporte Fernando).
-- Teléfono público (Nosotros y JSON-LD).
+## Widget de WhatsApp y política
+- El modal de WhatsApp es ahora un formulario tipo chat (nombre, correo, número,
+  área) que al enviar abre wa.me con un número elegido al azar. Botón flotante global.
+- Página /politica-privacidad (Ley 1581 de 2012). Enlazada en el pie y en el widget.
+  PENDIENTE: revisión legal por Fernando.
+
+## TODO datos de Fernando (marcados en content.ts)
 - Dirección pública para JSON-LD (o dejar solo ciudad/país).
 
 ## Notas para la próxima sesión

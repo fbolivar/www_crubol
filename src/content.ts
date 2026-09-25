@@ -16,12 +16,11 @@ export const empresa = {
   matricula: "4156504",
   camara: "Cámara de Comercio de Bogotá",
   dominio: "crubol.com.co",
-  correo: "contacto@crubol.com.co",
+  correo: "info@crubol.com",
   ciudad: "Bogotá",
   cobertura: "Cobertura en toda Colombia",
   frase: "Seguridad que habilita",
-  // TODO Fernando: teléfono fijo/celular público para Nosotros y JSON-LD.
-  telefono: "+57 000 000 0000",
+  telefono: "+57 300 406 9787",
   // TODO Fernando: dirección pública para el JSON-LD (o dejar solo ciudad/país).
   direccion: {
     calle: "Bogotá D.C.",
@@ -32,30 +31,45 @@ export const empresa = {
 } as const;
 
 // --------------------------------------------------------------------------
-// WhatsApp — números configurables. Formato internacional sin '+', espacios
-// ni guiones (p. ej. 573001234567).
-// TODO Fernando: reemplazar los números de ejemplo por los reales.
+// Opciones de "área de interés" (compartidas por el formulario de contacto y
+// el widget de WhatsApp).
+// --------------------------------------------------------------------------
+export const opcionesInteres = [
+  "No sé en qué estado está mi tecnología",
+  "Tuvimos un incidente y no quiero repetirlo",
+  "Tengo proveedor, pero no responde a tiempo",
+  "Un cliente o auditoría me exige cumplimiento",
+  "Quiero usar IA sin exponer mi información",
+] as const;
+
+// --------------------------------------------------------------------------
+// WhatsApp — líneas de atención. Formato internacional sin '+', espacios ni
+// guiones. Al contactar se elige una al azar para balancear la atención entre
+// los socios. Para cambiar los números, edite solo este arreglo.
 // --------------------------------------------------------------------------
 export const whatsapp = {
-  comercial: {
-    area: "Comercial",
-    responsable: "Emerson Cruz",
-    descripcion: "Diagnósticos, cotizaciones y propuestas",
-    numero: "573000000000", // TODO Fernando
-    mensaje:
-      "Hola, escribo desde crubol.com.co. Me interesa un diagnóstico o una propuesta para mi empresa.",
-  },
-  soporte: {
-    area: "Soporte técnico",
-    responsable: "Fernando Bolívar",
-    descripcion: "Incidentes y clientes en acompañamiento",
-    numero: "573000000001", // TODO Fernando
-    mensaje:
-      "Hola, escribo desde crubol.com.co. Necesito soporte técnico / reportar un incidente.",
-  },
+  numeros: ["573004069787", "573219213134"],
 } as const;
 
-export type CanalWhatsApp = keyof typeof whatsapp;
+// Contenido del widget de WhatsApp (estilo chat).
+export const whatsappForm = {
+  titulo: "Crubol",
+  estado: "En línea",
+  saludo:
+    "¡Hola! 👋 Déjenos sus datos y lo atendemos por WhatsApp en este momento.",
+  campos: {
+    nombre: "Nombre completo",
+    correo: "Correo electrónico",
+    telefono: "Número de WhatsApp",
+    area: "Área de interés",
+  },
+  indicativo: "CO +57",
+  placeholderArea: "— Área de interés —",
+  opciones: opcionesInteres,
+  enviar: "Contactar por WhatsApp",
+  legalAntes: "Al continuar acepta nuestra",
+  legalLink: "Política de Privacidad",
+} as const;
 
 // --------------------------------------------------------------------------
 // Navegación
@@ -381,13 +395,7 @@ export const contacto = {
       necesidad: "¿Qué lo trae por aquí?",
       mensaje: "Cuéntenos brevemente",
     },
-    opciones: [
-      "No sé en qué estado está mi tecnología",
-      "Tuvimos un incidente y no quiero repetirlo",
-      "Tengo proveedor, pero no responde a tiempo",
-      "Un cliente o auditoría me exige cumplimiento",
-      "Quiero usar IA sin exponer mi información",
-    ],
+    opciones: opcionesInteres,
     enviar: "Solicitar diagnóstico gratis →",
     placeholderSelect: "Elija una opción",
   },

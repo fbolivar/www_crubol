@@ -59,7 +59,15 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-6">
-          <p className="font-mono text-xs text-niebla/70">{pie.legal}</p>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-mono text-xs text-niebla/70">{pie.legal}</p>
+            <a
+              href="/politica-privacidad"
+              className="text-xs text-niebla transition-colors hover:text-texto"
+            >
+              Política de privacidad
+            </a>
+          </div>
         </div>
       </div>
     </footer>
