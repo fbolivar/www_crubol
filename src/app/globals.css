@@ -1,26 +1,126 @@
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   Crubol Technology — sistema de diseño
+   Paleta de marca. El menta (#63E6BE) SOLO sobre fondos oscuros:
+   sobre claro es ilegible (contraste 1.5:1); allí el acento es teal.
+   ========================================================================== */
+@theme {
+  /* Territorio oscuro */
+  --color-abismo: #04161b;
+  --color-profundo: #0a2630;
+  --color-profundo-2: #0c2e39;
+  --color-teal: #0b7285;
+  --color-cian: #15aabf;
+  --color-menta: #63e6be;
+  --color-texto: #e8f4f6;
+  --color-niebla: #93b7c0;
+
+  /* Territorio claro */
+  --color-papel: #fbfdfd;
+  --color-niebla-clara: #eef7f8;
+  --color-tinta: #16323a;
+  --color-gris: #48626b;
+  --color-linea: #dde9ec;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --ease-marca: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-lento: marquee 60s linear infinite;
+  --animate-gradiente: gradiente 6s ease infinite;
+  --animate-halo: halo 2s ease-in-out infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes gradiente {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes halo {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(99, 230, 190, 0.7); }
+  50% { box-shadow: 0 0 0 6px rgba(99, 230, 190, 0); }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-abismo);
+    color: var(--color-texto);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-teal);
+    color: var(--color-texto);
+  }
+
+  /* Foco visible y consistente en todo elemento interactivo */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-cian);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Subtítulo de sección: mono, mayúsculas, tracking amplio */
+  .eyebrow {
+    font-family: var(--font-mono), monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+  }
+
+  /* Palabra destacada del H1: degradado que recorre en bucle */
+  .texto-gradiente {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-menta),
+      var(--color-cian),
+      var(--color-menta)
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: var(--animate-gradiente);
+  }
+
+  /* Marquesina grande: texto en contorno menta, sin relleno */
+  .texto-contorno {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-menta);
+  }
+}
+
+/* Respeta prefers-reduced-motion: sin animación, contenido en estado final.
+   Framer Motion lo maneja con useReducedMotion; esto cubre el CSS. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
