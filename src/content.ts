@@ -78,8 +78,8 @@ export const nav = {
 // --------------------------------------------------------------------------
 export const hero = {
   eyebrow: "Soluciones de TI para su empresa",
-  tituloAntes: "Tecnología que sostiene",
-  tituloResaltado: "su operación, todos los días",
+  tituloAntes: "Tecnología que sostiene su operación,",
+  tituloResaltado: "todos los días",
   parrafo:
     "Infraestructura, ciberseguridad e inteligencia artificial para empresas medianas en Colombia. Evaluamos con evidencia, corregimos por prioridad y nos quedamos vigilando.",
   ctaPrimario: "Diagnóstico gratis →",
