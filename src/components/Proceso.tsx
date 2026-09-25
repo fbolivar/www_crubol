@@ -1,25 +1,14 @@
-import Image from "next/image";
 import { proceso } from "@/content";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { Reveal, RevealGroup, RevealItem } from "./ui/Reveal";
-import { HexOutline, HexSolid } from "./ui/Decor";
+import { DuotoneImage } from "./ui/DuotoneImage";
+import { Glow, HexOutline, HexSolid } from "./ui/Decor";
 import { IconBrujula } from "./ui/Icons";
 
 export function Proceso() {
   return (
     <section id="proceso" className="relative overflow-hidden bg-abismo py-20 sm:py-28">
-      {/* Foto del data center como textura de fondo (duotono tenue) */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.10]">
-        <div className="duotono h-full w-full">
-          <Image
-            src="/fotos/datacenter.jpg"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
-      </div>
+      <Glow className="left-1/2 top-24 h-80 w-80 -translate-x-1/2" color="rgba(11,114,133,0.16)" />
       <HexSolid className="right-[8%] top-16 h-24 w-24" />
       <HexOutline className="left-[6%] bottom-16 h-16 w-16 opacity-40" />
 
@@ -36,7 +25,22 @@ export function Proceso() {
           </h2>
         </Reveal>
 
-        <div className="relative mt-14">
+        {/* Imagen enmarcada nítida del data center */}
+        <Reveal delay={0.1} className="mx-auto mt-10 max-w-4xl">
+          <div className="relative">
+            <DuotoneImage
+              src="/fotos/datacenter.jpg"
+              alt="Infraestructura monitoreada en centro de datos"
+              className="aspect-[21/7] rounded-3xl border border-white/10 shadow-2xl"
+              sizes="(max-width: 1024px) 100vw, 900px"
+            />
+            <span className="absolute bottom-4 left-4 rounded-full border border-menta/30 bg-abismo/70 px-4 py-1.5 font-mono text-xs text-menta backdrop-blur-sm">
+              Operación real, monitoreada 24/7
+            </span>
+          </div>
+        </Reveal>
+
+        <div className="relative mt-12">
           {/* Línea conectora (solo en escritorio) */}
           <div
             aria-hidden

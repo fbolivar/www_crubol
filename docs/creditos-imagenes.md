@@ -8,10 +8,9 @@ ni imágenes con texto en inglés.
 
 | Archivo (`public/fotos/`) | Uso | Fuente | Licencia |
 |---|---|---|---|
-| `datacenter.jpg` | Infraestructura / hero | Wikimedia Commons — "Front of server racks at NERSC" | CC0 / dominio público |
-| `codigo.jpg` | Ciberseguridad / textura | StockSnap.io — "Code Technology" | CC0 (StockSnap) |
-| `soporte.jpg` | Nosotros / soporte | StockSnap.io — "Laptop Working" | CC0 (StockSnap) |
-| `consultoria.jpg` | Nosotros / consultoría | StockSnap.io — "Team Meeting" | CC0 (StockSnap) |
+| `datacenter.jpg` | Proceso (imagen enmarcada) | Wikimedia Commons — "Front of server racks at NERSC" | CC0 / dominio público |
+| `soporte.jpg` | Nosotros (foto principal) | StockSnap.io — "Laptop Working" | CC0 (StockSnap) |
+| `consultoria.jpg` | Nosotros (foto superpuesta) | StockSnap.io — "Team Meeting" | CC0 (StockSnap) |
 
 Descubrimiento vía Openverse (`api.openverse.org`), filtrando a licencias de uso
 comercial (CC0/PDM). La licencia CC0 no exige crédito; este archivo se mantiene
