@@ -25,23 +25,6 @@ export function PorQue() {
               <ProgressBar key={c.label} valor={c.valor} label={c.label} />
             ))}
           </Reveal>
-
-          <Reveal delay={0.15}>
-            <div className="mt-8 flex items-center gap-4 rounded-2xl border border-white/10 bg-profundo/60 p-5">
-              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal to-cian font-display text-lg font-bold text-abismo">
-                {porque.socio.iniciales}
-              </span>
-              <div>
-                <div className="font-display font-medium text-texto">
-                  {porque.socio.nombre}
-                </div>
-                <div className="text-sm text-niebla">{porque.socio.rol}</div>
-                <div className="mt-1 font-mono text-xs text-menta">
-                  {porque.socio.credencial}
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </div>
 
         {/* Derecha: filas numeradas */}
