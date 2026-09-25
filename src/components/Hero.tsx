@@ -7,12 +7,14 @@ import { TechMarquee } from "./TechMarquee";
 import { Button, ButtonLink } from "./ui/Button";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { Reveal } from "./ui/Reveal";
+import { HexOutline, HexSolid, DotGrid, Glow } from "./ui/Decor";
+import { ShapeDivider } from "./ui/ShapeDivider";
 import { IconRayo } from "./ui/Icons";
 
 export function Hero() {
   const { abrir } = useWhatsApp();
   return (
-    <section id="top" className="relative overflow-hidden bg-abismo pt-28 sm:pt-32">
+    <section id="top" className="relative overflow-hidden bg-abismo pt-28 pb-0 sm:pt-32">
       {/* Resplandor de fondo */}
       <div
         aria-hidden
@@ -22,6 +24,11 @@ export function Hero() {
             "radial-gradient(60% 50% at 75% 20%, rgba(21,170,191,0.12), transparent 70%)",
         }}
       />
+      {/* Decoraciones geométricas de marca */}
+      <Glow className="-left-20 top-10 h-72 w-72" color="rgba(11,114,133,0.22)" />
+      <HexOutline className="left-[4%] top-[36%] h-20 w-20 opacity-40" />
+      <HexSolid className="right-[6%] top-[62%] h-24 w-24" />
+      <DotGrid className="bottom-40 left-[42%] h-24 w-24 opacity-30" />
       <div className="relative mx-auto max-w-6xl px-4">
         <div className="grid items-center gap-12 pb-12 lg:grid-cols-2 lg:gap-10 lg:pb-16">
           {/* Columna izquierda */}
@@ -75,6 +82,9 @@ export function Hero() {
       </div>
 
       <TechMarquee />
+      <div className="relative h-[60px] sm:h-[90px]">
+        <ShapeDivider fill="var(--color-papel)" posicion="bottom" variante="curva" />
+      </div>
     </section>
   );
 }

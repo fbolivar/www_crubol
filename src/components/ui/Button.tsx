@@ -1,12 +1,20 @@
 import type { ButtonHTMLAttributes, AnchorHTMLAttributes, ReactNode } from "react";
 
-type Variante = "menta" | "teal" | "contorno-claro" | "contorno-oscuro";
+type Variante =
+  | "menta"
+  | "teal"
+  | "gradiente"
+  | "contorno-claro"
+  | "contorno-oscuro";
 
 const estilos: Record<Variante, string> = {
   // Sobre oscuro: relleno menta, texto abismo.
   menta: "bg-menta text-abismo hover:shadow-[0_10px_30px_-8px_rgba(99,230,190,0.6)]",
   // Sobre claro: relleno teal, texto blanco.
   teal: "bg-teal text-white hover:shadow-[0_10px_30px_-8px_rgba(11,114,133,0.5)]",
+  // Degradado teal->cian (estilo TechGuru), texto blanco.
+  gradiente:
+    "bg-gradient-to-r from-teal to-cian text-white hover:shadow-[0_12px_34px_-8px_rgba(21,170,191,0.6)]",
   // Contorno sobre oscuro.
   "contorno-oscuro":
     "border border-white/25 text-texto hover:border-menta hover:text-menta",

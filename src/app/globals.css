@@ -34,6 +34,8 @@
   --animate-marquee-lento: marquee 60s linear infinite;
   --animate-gradiente: gradiente 6s ease infinite;
   --animate-halo: halo 2s ease-in-out infinite;
+  --animate-flotar: flotar 7s ease-in-out infinite;
+  --animate-flotar-lento: flotar 11s ease-in-out infinite;
 }
 
 @keyframes marquee {
@@ -51,10 +53,16 @@
   50% { box-shadow: 0 0 0 6px rgba(99, 230, 190, 0); }
 }
 
+@keyframes flotar {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(6deg); }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
@@ -106,6 +114,30 @@
   .texto-contorno {
     color: transparent;
     -webkit-text-stroke: 1.5px var(--color-menta);
+  }
+
+  /* Duotono teal para fotos: la imagen va en escala de grises y el
+     contenedor tiñe con la marca. Unifica fotos de distinta procedencia. */
+  .duotono {
+    position: relative;
+    background-color: var(--color-abismo);
+  }
+  .duotono img {
+    filter: grayscale(1) contrast(1.05) brightness(0.95);
+    mix-blend-mode: luminosity;
+  }
+  .duotono::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(11, 114, 133, 0.55),
+      rgba(4, 22, 27, 0.35) 55%,
+      rgba(99, 230, 190, 0.25)
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
   }
 }
 

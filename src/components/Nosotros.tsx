@@ -5,30 +5,56 @@ import { useWhatsApp } from "./WhatsAppModal";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { Reveal } from "./ui/Reveal";
 import { Button } from "./ui/Button";
+import { DuotoneImage } from "./ui/DuotoneImage";
+import { HexOutline, DotGrid } from "./ui/Decor";
 import { IconEscudo, IconCheck, IconWhatsApp } from "./ui/Icons";
 
 export function Nosotros() {
   const { abrir } = useWhatsApp();
   return (
-    <section id="nosotros" className="bg-papel py-20 sm:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-2 lg:gap-16">
-        {/* Izquierda: tarjeta + sello flotante */}
+    <section id="nosotros" className="relative overflow-hidden bg-papel py-20 sm:py-28">
+      <DotGrid className="left-6 top-10 h-28 w-28 opacity-60" color="rgba(11,114,133,0.35)" />
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 lg:grid-cols-2 lg:gap-16">
+        {/* Izquierda: fotos superpuestas + sello + tarjeta de dato */}
         <Reveal className="relative">
-          <div className="relative rounded-3xl border border-linea bg-niebla-clara p-8 sm:p-10">
-            <span className="inline-flex text-teal">
-              <IconEscudo className="h-10 w-10" />
-            </span>
-            <p className="mt-6 font-display text-2xl font-bold text-tinta sm:text-3xl">
-              {nosotros.tarjeta.titulo}
-            </p>
-            <p className="mt-4 font-mono text-sm leading-relaxed text-gris">
-              {nosotros.tarjeta.dato}
-            </p>
+          <div className="relative">
+            {/* Foto principal */}
+            <DuotoneImage
+              src="/fotos/soporte.jpg"
+              alt="Atención directa de los socios de Crubol"
+              className="aspect-[4/3] rounded-3xl border border-linea shadow-xl"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+            />
+            {/* Foto secundaria superpuesta */}
+            <div className="absolute -bottom-10 -right-4 w-1/2 sm:-right-8">
+              <DuotoneImage
+                src="/fotos/consultoria.jpg"
+                alt="Equipo de Crubol en sesión de diagnóstico"
+                className="aspect-square rounded-2xl border-4 border-papel shadow-2xl"
+                sizes="(max-width: 1024px) 50vw, 22vw"
+              />
+            </div>
+            {/* Sello flotante */}
+            <div className="absolute -left-3 -top-5 rounded-2xl bg-teal px-5 py-3 text-white shadow-lg">
+              <span className="block font-display text-2xl font-bold leading-none">+25</span>
+              <span className="text-[11px] leading-tight">años de experiencia combinada</span>
+            </div>
+            <HexOutline className="-right-6 top-6 h-16 w-16" color="rgba(11,114,133,0.5)" />
           </div>
-          {/* Sello flotante */}
-          <div className="absolute -right-3 -top-5 rounded-2xl bg-teal px-5 py-3 text-white shadow-lg sm:right-6">
-            <span className="block font-display text-xl font-bold leading-none">+25</span>
-            <span className="text-[11px] leading-tight">años de experiencia combinada</span>
+
+          {/* Tarjeta de dato societario */}
+          <div className="mt-16 flex items-start gap-4 rounded-2xl border border-linea bg-niebla-clara p-6">
+            <span className="mt-0.5 inline-flex shrink-0 text-teal">
+              <IconEscudo className="h-8 w-8" />
+            </span>
+            <div>
+              <p className="font-display text-lg font-bold text-tinta">
+                {nosotros.tarjeta.titulo}
+              </p>
+              <p className="mt-2 font-mono text-xs leading-relaxed text-gris">
+                {nosotros.tarjeta.dato}
+              </p>
+            </div>
           </div>
         </Reveal>
 

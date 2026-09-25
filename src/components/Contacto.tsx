@@ -5,6 +5,7 @@ import { useWhatsApp } from "./WhatsAppModal";
 import { ContactForm } from "./ContactForm";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { Reveal } from "./ui/Reveal";
+import { Glow, HexOutline, DotGrid } from "./ui/Decor";
 import { IconArroba, IconMapa, IconWhatsApp } from "./ui/Icons";
 
 const iconos = {
@@ -16,8 +17,11 @@ const iconos = {
 export function Contacto() {
   const { abrir } = useWhatsApp();
   return (
-    <section id="contacto" className="bg-abismo py-20 sm:py-28">
-      <div className="mx-auto grid max-w-6xl items-start gap-12 px-4 lg:grid-cols-2 lg:gap-16">
+    <section id="contacto" className="relative overflow-hidden bg-abismo py-20 sm:py-28">
+      <Glow className="-right-16 top-10 h-72 w-72" color="rgba(11,114,133,0.2)" />
+      <HexOutline className="left-[3%] top-[20%] h-16 w-16 opacity-30" />
+      <DotGrid className="bottom-10 right-[45%] h-24 w-24 opacity-20" />
+      <div className="relative mx-auto grid max-w-6xl items-start gap-12 px-4 lg:grid-cols-2 lg:gap-16">
         <div>
           <Reveal>
             <SectionEyebrow icon={<IconArroba />} tono="oscuro">
