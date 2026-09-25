@@ -5,6 +5,13 @@ import { useInView, useReducedMotion } from "framer-motion";
 
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
+function formatear(n: number, decimales: number) {
+  return n.toLocaleString("es-CO", {
+    minimumFractionDigits: decimales,
+    maximumFractionDigits: decimales,
+  });
+}
+
 /**
  * Cuenta desde 0 hasta `valor` al entrar en pantalla, easing cúbico, 1,4 s.
  * Con prefers-reduced-motion muestra el valor final directamente.
@@ -27,11 +34,7 @@ export function Counter({
   const decimales = Number.isInteger(valor) ? 0 : 1;
 
   useEffect(() => {
-    if (!enVista) return;
-    if (reduce) {
-      setN(valor);
-      return;
-    }
+    if (!enVista || reduce) return;
     let raf = 0;
     const inicio = performance.now();
     const tick = (ahora: number) => {
@@ -43,10 +46,8 @@ export function Counter({
     return () => cancelAnimationFrame(raf);
   }, [enVista, reduce, valor, duracion]);
 
-  const mostrado = n.toLocaleString("es-CO", {
-    minimumFractionDigits: decimales,
-    maximumFractionDigits: decimales,
-  });
+  // Con reduced-motion se muestra el valor final sin animar.
+  const mostrado = reduce ? formatear(valor, decimales) : formatear(n, decimales);
 
   return (
     <span ref={ref}>

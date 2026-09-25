@@ -1,0 +1,67 @@
+import Image from "next/image";
+import { pie, empresa } from "@/content";
+
+export function Footer() {
+  return (
+    <footer className="border-t border-white/10 bg-abismo">
+      <div className="mx-auto max-w-6xl px-4 py-14">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Logo + descripción */}
+          <div className="lg:col-span-1">
+            <Image
+              src="/marca/crubol-logo-oscuro.png"
+              alt="Crubol Technology"
+              width={1911}
+              height={758}
+              className="h-8 w-auto"
+            />
+            <p className="mt-4 max-w-xs text-sm text-niebla">{pie.descripcion}</p>
+          </div>
+
+          {/* Columnas de enlaces */}
+          {pie.columnas.map((col) => (
+            <div key={col.titulo}>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-menta">
+                {col.titulo}
+              </h3>
+              <ul className="mt-4 flex flex-col gap-2.5">
+                {col.enlaces.map((e) => (
+                  <li key={e.label}>
+                    <a
+                      href={e.href}
+                      className="text-sm text-niebla transition-colors hover:text-texto"
+                    >
+                      {e.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {/* Contacto */}
+          <div>
+            <h3 className="font-mono text-xs uppercase tracking-widest text-menta">
+              {pie.contacto.titulo}
+            </h3>
+            <ul className="mt-4 flex flex-col gap-2.5 text-sm text-niebla">
+              <li>
+                <a
+                  href={`mailto:${empresa.correo}`}
+                  className="transition-colors hover:text-texto"
+                >
+                  {pie.contacto.correo}
+                </a>
+              </li>
+              <li>{pie.contacto.ciudad}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <p className="font-mono text-xs text-niebla/70">{pie.legal}</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
