@@ -1,4 +1,5 @@
 import { WhatsAppProvider } from "@/components/WhatsAppModal";
+import { Asistente } from "@/components/Asistente";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Nosotros } from "@/components/Nosotros";
@@ -27,6 +28,7 @@ export default function Home() {
         <Contacto />
       </main>
       <Footer />
+      <Asistente />
     </WhatsAppProvider>
   );
 }

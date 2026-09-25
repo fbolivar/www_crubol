@@ -67,6 +67,18 @@ frontend — COMPLETA. Diseño aprobado por Fernando. Sitio funcional de punta a
 - WhatsApp: +57 300 406 9787 y +57 321 921 3134. Al contactar se elige uno al azar.
 - Teléfono JSON-LD: +57 300 406 9787.
 
+## Asistente de chat con IA (ADR 0002)
+- Bot de chat (botón flotante) que responde con el portafolio como base de
+  conocimiento. Modelo Anthropic `claude-opus-5` vía Route Handler
+  `src/app/api/asistente/route.ts`. KB en `src/lib/asistente-kb.ts`.
+- Secreto `ANTHROPIC_API_KEY` en `.env.local` (dev) y Vercel (prod); NO en el repo.
+  `.env.example` documenta la variable; `.env.local` creado vacío (gitignoreado).
+- Dep nueva: `@anthropic-ai/sdk`. Guardas: largo de mensaje, historial e effort low.
+- El asistente reemplazó el botón flotante de WhatsApp; "Dejar mis datos" abre el
+  widget de WhatsApp.
+- PENDIENTE: cargar la API key en Vercel y agregar rate limiting a nivel de plataforma.
+  No se pudo verificar la calidad de respuestas sin la clave.
+
 ## Widget de WhatsApp y política
 - El modal de WhatsApp es ahora un formulario tipo chat (nombre, correo, número,
   área) que al enviar abre wa.me con un número elegido al azar. Botón flotante global.

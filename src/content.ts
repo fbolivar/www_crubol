@@ -71,6 +71,25 @@ export const whatsappForm = {
   legalLink: "Política de Privacidad",
 } as const;
 
+// Asistente de chat (IA).
+export const asistente = {
+  titulo: "Asistente Crubol",
+  subtitulo: "Le orientamos al instante",
+  saludo:
+    "¡Hola! 👋 Soy el asistente de Crubol. Cuénteme qué necesita para su empresa y lo oriento — o, si prefiere, déjeme sus datos y un asesor lo contacta.",
+  placeholder: "Escriba su mensaje…",
+  ctaDatos: "Dejar mis datos",
+  sugerencias: [
+    "¿Qué servicios ofrecen?",
+    "¿Cómo trabajan?",
+    "Modalidades de servicio",
+    "¿Cómo protegen mi información?",
+  ],
+  error:
+    "No pude responder en este momento. Intente de nuevo o déjeme sus datos y un asesor lo contacta.",
+  aviso: "Asistente automático. Puede cometer errores; confirme lo importante con un asesor.",
+} as const;
+
 // --------------------------------------------------------------------------
 // Navegación
 // --------------------------------------------------------------------------

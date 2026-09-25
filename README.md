@@ -49,6 +49,26 @@ y Soporte; al elegir se abre `wa.me` con el mensaje del canal.
 - `empresa.telefono` — teléfono público (Nosotros y JSON-LD).
 - `empresa.direccion` — dirección para el JSON-LD (o dejar solo ciudad/país).
 
+## Asistente de chat con IA
+
+El botón flotante abre un asistente que responde preguntas sobre los servicios
+usando el portafolio como base de conocimiento (ver `docs/adr/0002-asistente-ia.md`).
+
+- **Requiere una clave de Anthropic.** Cópiela en `.env.local` (local) y en Vercel
+  → Settings → Environment Variables (Production y Preview):
+
+  ```bash
+  ANTHROPIC_API_KEY=sk-ant-...
+  ```
+
+  Obténgala en https://console.anthropic.com/. Sin la clave, el asistente responde
+  con un mensaje de "no configurado" y el resto del sitio funciona normal.
+- El texto del portafolio que alimenta al bot está en `src/lib/asistente-kb.ts`.
+- El modelo (`claude-opus-5`) y los límites están en `src/app/api/asistente/route.ts`;
+  para bajar costo se puede cambiar a `claude-haiku-4-5`.
+- **Antes de abrir al público:** agregue rate limiting a nivel de Vercel, porque el
+  endpoint `/api/asistente` es público.
+
 ## Formulario de contacto
 
 El formulario valida los campos obligatorios en el cliente y abre el correo del
