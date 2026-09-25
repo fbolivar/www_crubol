@@ -57,21 +57,6 @@ export function Hero() {
                 </ButtonLink>
               </div>
             </Reveal>
-            <Reveal delay={0.2}>
-              <div className="mt-10 flex items-center gap-4">
-                <div className="flex -space-x-3">
-                  {hero.confianza.avatares.map((a) => (
-                    <span
-                      key={a}
-                      className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-abismo bg-gradient-to-br from-teal to-cian font-display text-sm font-bold text-abismo"
-                    >
-                      {a}
-                    </span>
-                  ))}
-                </div>
-                <p className="max-w-xs text-sm text-niebla">{hero.confianza.texto}</p>
-              </div>
-            </Reveal>
           </div>
 
           {/* Columna derecha: pieza central de marca con chips flotantes */}
