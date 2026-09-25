@@ -14,6 +14,7 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { whatsappForm } from "@/content";
 import { enlaceWhatsApp } from "@/lib/whatsapp";
+import { indicativos } from "@/lib/indicativos";
 import { IconCerrar, IconWhatsApp } from "./ui/Icons";
 
 type Ctx = { abrir: () => void };
@@ -96,6 +97,7 @@ export function WhatsAppProvider({ children }: { children: ReactNode }) {
     const v = {
       nombre: String(fd.get("nombre") ?? "").trim(),
       correo: String(fd.get("correo") ?? "").trim(),
+      indicativo: String(fd.get("indicativo") ?? "+57").trim(),
       telefono: String(fd.get("telefono") ?? "").trim(),
       area: String(fd.get("area") ?? "").trim(),
     };
@@ -115,7 +117,7 @@ export function WhatsAppProvider({ children }: { children: ReactNode }) {
     const mensaje = [
       `Hola, soy ${v.nombre}.`,
       `Correo: ${v.correo}`,
-      `WhatsApp: +57 ${v.telefono}`,
+      `WhatsApp: ${v.indicativo} ${v.telefono}`,
       v.area && `Área de interés: ${v.area}`,
       "",
       "Escribo desde crubol.com.co y quiero que me contacten.",
@@ -233,9 +235,18 @@ export function WhatsAppProvider({ children }: { children: ReactNode }) {
 
                   <div>
                     <div className="flex gap-2">
-                      <span className="flex shrink-0 items-center rounded-xl border border-white/10 bg-abismo/60 px-3 text-sm font-medium text-niebla">
-                        {whatsappForm.indicativo}
-                      </span>
+                      <select
+                        name="indicativo"
+                        defaultValue="+57"
+                        aria-label="Indicativo de país"
+                        className="w-[42%] shrink-0 rounded-xl border border-white/10 bg-abismo/60 px-2 py-3 text-sm text-texto focus:border-menta focus:outline-none focus-visible:outline-2 focus-visible:outline-cian"
+                      >
+                        {indicativos.map((p) => (
+                          <option key={`${p.pais}${p.code}`} value={p.code}>
+                            {p.pais} {p.code}
+                          </option>
+                        ))}
+                      </select>
                       <input
                         name="telefono"
                         type="tel"
@@ -243,7 +254,7 @@ export function WhatsAppProvider({ children }: { children: ReactNode }) {
                         aria-label={whatsappForm.campos.telefono}
                         aria-invalid={!!errores.telefono}
                         placeholder={`${whatsappForm.campos.telefono} *`}
-                        className={inputBase}
+                        className={`${inputBase} min-w-0 flex-1`}
                       />
                     </div>
                     {errores.telefono && (
