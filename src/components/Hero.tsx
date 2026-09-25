@@ -2,7 +2,7 @@
 
 import { hero } from "@/content";
 import { useWhatsApp } from "./WhatsAppModal";
-import { HeroPanel } from "./HeroPanel";
+import { HeroArt } from "./HeroArt";
 import { TechMarquee } from "./TechMarquee";
 import { Button, ButtonLink } from "./ui/Button";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
@@ -74,9 +74,9 @@ export function Hero() {
             </Reveal>
           </div>
 
-          {/* Columna derecha: panel simulado */}
+          {/* Columna derecha: pieza central de marca con chips flotantes */}
           <Reveal delay={0.15}>
-            <HeroPanel />
+            <HeroArt />
           </Reveal>
         </div>
       </div>
