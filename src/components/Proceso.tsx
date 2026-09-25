@@ -1,14 +1,42 @@
+import Image from "next/image";
 import { proceso } from "@/content";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { Reveal, RevealGroup, RevealItem } from "./ui/Reveal";
-import { DuotoneImage } from "./ui/DuotoneImage";
-import { Glow, HexOutline, HexSolid } from "./ui/Decor";
+import { HexOutline, HexSolid } from "./ui/Decor";
 import { IconBrujula } from "./ui/Icons";
 
 export function Proceso() {
   return (
     <section id="proceso" className="relative overflow-hidden bg-abismo py-20 sm:py-28">
-      <Glow className="left-1/2 top-24 h-80 w-80 -translate-x-1/2" color="rgba(11,114,133,0.16)" />
+      {/* Foto del data center de fondo, teñida y fundida con el abismo */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <Image
+          src="/fotos/datacenter.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-[0.38]"
+          style={{ filter: "grayscale(0.35) contrast(1.05)" }}
+        />
+        {/* Tinte teal de marca */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(11,114,133,0.45), rgba(4,22,27,0.15) 55%, rgba(21,170,191,0.30))",
+            mixBlendMode: "multiply",
+          }}
+        />
+        {/* Viñeta para legibilidad del texto arriba y de las tarjetas abajo */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, #04161B 0%, rgba(4,22,27,0.35) 28%, rgba(4,22,27,0.45) 62%, #04161B 100%)",
+          }}
+        />
+      </div>
+
       <HexSolid className="right-[8%] top-16 h-24 w-24" />
       <HexOutline className="left-[6%] bottom-16 h-16 w-16 opacity-40" />
 
@@ -25,22 +53,7 @@ export function Proceso() {
           </h2>
         </Reveal>
 
-        {/* Imagen enmarcada nítida del data center */}
-        <Reveal delay={0.1} className="mx-auto mt-10 max-w-4xl">
-          <div className="relative">
-            <DuotoneImage
-              src="/fotos/datacenter.jpg"
-              alt="Infraestructura monitoreada en centro de datos"
-              className="aspect-[21/7] rounded-3xl border border-white/10 shadow-2xl"
-              sizes="(max-width: 1024px) 100vw, 900px"
-            />
-            <span className="absolute bottom-4 left-4 rounded-full border border-menta/30 bg-abismo/70 px-4 py-1.5 font-mono text-xs text-menta backdrop-blur-sm">
-              Operación real, monitoreada 24/7
-            </span>
-          </div>
-        </Reveal>
-
-        <div className="relative mt-12">
+        <div className="relative mt-14">
           {/* Línea conectora (solo en escritorio) */}
           <div
             aria-hidden
@@ -49,7 +62,7 @@ export function Proceso() {
           <RevealGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {proceso.pasos.map((p) => (
               <RevealItem key={p.numero}>
-                <div className="flex h-full flex-col items-center rounded-2xl border border-white/10 bg-profundo/60 p-7 text-center backdrop-blur-sm transition-all duration-300 ease-marca hover:-translate-y-2 hover:border-menta/40">
+                <div className="flex h-full flex-col items-center rounded-2xl border border-white/10 bg-profundo/70 p-7 text-center backdrop-blur-md transition-all duration-300 ease-marca hover:-translate-y-2 hover:border-menta/40">
                   <span className="relative flex h-14 w-14 items-center justify-center rounded-full border border-menta/40 bg-abismo font-display text-xl font-bold text-menta">
                     {p.numero}
                   </span>
