@@ -43,16 +43,13 @@ export function Nosotros() {
           </div>
 
           {/* Tarjeta de dato societario */}
-          <div className="mt-16 flex items-start gap-4 rounded-2xl border border-linea bg-niebla-clara p-6">
-            <span className="mt-0.5 inline-flex shrink-0 text-teal">
+          <div className="mt-16 flex items-center gap-4 rounded-2xl border border-linea bg-niebla-clara p-6">
+            <span className="inline-flex shrink-0 text-teal">
               <IconEscudo className="h-8 w-8" />
             </span>
             <div>
               <p className="font-display text-lg font-bold text-tinta">
                 {nosotros.tarjeta.titulo}
-              </p>
-              <p className="mt-2 font-mono text-xs leading-relaxed text-gris">
-                {nosotros.tarjeta.dato}
               </p>
             </div>
           </div>
