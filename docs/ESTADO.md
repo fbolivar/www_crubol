@@ -40,6 +40,19 @@ frontend — COMPLETA. Diseño aprobado por Fernando. Sitio funcional de punta a
   Reporte en `docs/lighthouse/reporte-desktop.html`.
 - Rama `feat/sitio-crubol`, 5 commits. Sin push todavía.
 
+## Rediseño estilo TechGuru (sobre el diseño aprobado)
+
+- A pedido de Fernando, se adoptó el lenguaje visual del template TechGuru
+  conservando paleta y contenido honesto: divisores angulados/curvos entre
+  secciones, hexágonos y puntos flotantes (`ui/Decor`, `ui/ShapeDivider`),
+  botón con degradado, conectores en el proceso.
+- Fotos con licencia CC0 (dominio público) con tratamiento duotono teal
+  (`ui/DuotoneImage`, clase `.duotono`): data center, código, soporte,
+  consultoría. Usadas en nosotros (fotos superpuestas), proceso, marquesina
+  grande y contacto. Créditos en `docs/creditos-imagenes.md`.
+- NO se usaron `inicial.jpg`/`raro.jpg`/`soc.webp` (texto en inglés y azul).
+- Lighthouse se mantiene 100/100/100/100; peso 468 KiB.
+
 ## Pendientes / próxima acción
 
 - Fernando: revisar y aprobar el sitio completo.
