@@ -71,11 +71,29 @@ usando el portafolio como base de conocimiento (ver `docs/adr/0002-asistente-ia.
 
 ## Formulario de contacto
 
-El formulario valida los campos obligatorios en el cliente y abre el correo del
-visitante (`mailto:` a `contacto@crubol.com.co`) con los datos ya redactados. No
-hay backend ni base de datos. Para migrar a envío por servidor (p. ej. Resend),
-reemplazar el `window.location.href` de `src/components/ContactForm.tsx` por una
-llamada a un Route Handler; el resto de la UI no cambia.
+El formulario valida en el cliente y envía los datos al Route Handler
+`src/app/api/contacto/route.ts`, que los remite por **correo SMTP** (Titan Email)
+a `info@crubol.com`. Incluye un campo trampa anti-spam y responde a la dirección
+del visitante (`reply-to`).
+
+Configurar en `.env.local` (local) y en Vercel → Environment Variables:
+
+```bash
+SMTP_HOST=smtp.titan.email
+SMTP_PORT=465
+SMTP_USER=info@crubol.com
+SMTP_PASSWORD=          # contraseña del buzón — SOLO aquí y en Vercel, nunca en el repo
+SMTP_FROM="Crubol Web <info@crubol.com>"
+SMTP_TO=info@crubol.com # destino de los mensajes (por defecto, SMTP_USER)
+```
+
+Sin `SMTP_PASSWORD`, el formulario muestra "no configurado" y el resto del sitio
+funciona normal. Prueba rápida tras cargar la clave:
+
+```bash
+curl -X POST http://localhost:3000/api/contacto -H "Content-Type: application/json" \
+  -d '{"nombre":"Prueba","empresa":"ACME","correo":"tu@correo.com","necesidad":"Prueba"}'
+```
 
 ## Marca y activos
 

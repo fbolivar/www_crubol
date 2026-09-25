@@ -20,7 +20,9 @@ frontend — COMPLETA. Diseño aprobado por Fernando. Sitio funcional de punta a
 ## Decisiones tomadas
 
 - El brief de Crubol manda sobre la plantilla SaaS. Ver `docs/adr/0001-...`.
-- Formulario por `mailto:` (sin backend). Migrable a Resend después.
+- Formulario de contacto ahora envía por SMTP (Titan Email) a info@crubol.com vía
+  `src/app/api/contacto/route.ts` (antes era mailto). Secretos SMTP_* en .env.local
+  y Vercel; con campo trampa anti-spam y reply-to al visitante.
 - Framer Motion es la única dependencia nueva de runtime.
 - Fuentes autoalojadas en `/public/fonts` con `next/font/local`.
 - Logos en `/public/marca`. Imagen `soc.webp` descartada por peso (1.2 MB).
