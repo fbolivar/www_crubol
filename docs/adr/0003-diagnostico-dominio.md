@@ -8,11 +8,15 @@ informe (progreso + resultado en pestaña nueva) y capture al prospecto con un
 formulario para el "informe completo".
 
 ## Decisión
-- **Alcance del análisis automático (pasivo y seguro):** cabeceras de seguridad
-  (HSTS, CSP, X-Content-Type-Options, X-Frame-Options, Referrer-Policy,
-  Permissions-Policy, exposición del `Server`), certificado SSL/TLS (validez,
-  días restantes, emisor, versión de protocolo) y SEO on-page (título, meta,
-  H1/H2, alt, formato de imagen). Todo equivale a lo que ve un navegador.
+- **Alcance del análisis automático (pasivo y seguro):**
+  - Cabeceras y web: HTTPS, redirección HTTP→HTTPS, HSTS, CSP,
+    X-Content-Type-Options, clickjacking, Referrer-Policy, cookies seguras,
+    exposición de tecnología, security.txt.
+  - Certificado SSL/TLS: validez, días restantes, versión de protocolo, CAA, emisor.
+  - Correo y dominio (DNS): SPF, DKIM (sondeo de selectores comunes), DMARC, MX
+    (con proveedor) y reputación en listas negras públicas (DNSBL).
+  Todo es pasivo: solicitudes HTTP/TLS estándar y consultas DNS, sin escaneo
+  intrusivo. (El análisis SEO se retiró a pedido de Fernando.)
 - **NO se hace escaneo activo de puertos ni de vulnerabilidades** desde el endpoint
   público: escanear dominios de terceros sin autorización es un riesgo legal y de
   abuso, y las plataformas serverless lo limitan. Eso queda para el "informe

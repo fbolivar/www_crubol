@@ -13,9 +13,9 @@ type Check = { titulo: string; estado: Estado; valor: string; consejo: string };
 type Grupo = { titulo: string; checks: Check[] };
 type Reporte = {
   dominio: string;
-  scores: { seguridad: number; web: number };
+  scores: { seguridad: number; correo: number };
   resumen: string;
-  meta: { servidor: string; htmlKB: number; palabras: number; tls: string };
+  meta: { servidor: string; tls: string; ip: string };
   grupos: Grupo[];
 };
 
@@ -168,7 +168,7 @@ function Informe({ reporte }: { reporte: Reporte }) {
       <div className="mt-6 flex flex-col items-start gap-8 sm:flex-row sm:items-center">
         <div className="flex gap-6">
           <ScoreRing valor={reporte.scores.seguridad} label={t.labelSeguridad} />
-          <ScoreRing valor={reporte.scores.web} label={t.labelWeb} />
+          <ScoreRing valor={reporte.scores.correo} label={t.labelWeb} />
         </div>
         <div>
           <h1 className="font-display text-2xl font-bold text-texto">
@@ -176,8 +176,7 @@ function Informe({ reporte }: { reporte: Reporte }) {
           </h1>
           <p className="mt-2 text-niebla">{reporte.resumen}</p>
           <p className="mt-2 font-mono text-xs text-niebla/70">
-            Servidor: {reporte.meta.servidor} · {reporte.meta.tls} · {reporte.meta.htmlKB} KB ·{" "}
-            {reporte.meta.palabras} palabras
+            Servidor: {reporte.meta.servidor} · {reporte.meta.tls} · IP {reporte.meta.ip}
           </p>
         </div>
       </div>

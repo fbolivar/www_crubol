@@ -42,7 +42,7 @@ export function generarInformePDF(
       `Solicitado por: ${datos.nombre}  ·  ${new Date().toLocaleDateString("es-CO", { year: "numeric", month: "long", day: "numeric" })}`,
     );
     doc.fillColor(GRIS).fontSize(9).text(
-      `Servidor: ${reporte.meta.servidor}  ·  ${reporte.meta.tls}  ·  ${reporte.meta.htmlKB} KB  ·  ${reporte.meta.palabras} palabras`,
+      `Servidor: ${reporte.meta.servidor}  ·  ${reporte.meta.tls}  ·  IP ${reporte.meta.ip}`,
     );
 
     // Puntajes
@@ -52,8 +52,8 @@ export function generarInformePDF(
     doc.roundedRect(x0 + ancho / 2 + 6, yP, ancho / 2 - 6, 54, 8).fillAndStroke("#F4FAFB", LINEA);
     doc.fillColor(TEAL).fontSize(24).font("Helvetica-Bold").text(`${reporte.scores.seguridad}/100`, x0 + 16, yP + 10);
     doc.fillColor(GRIS).fontSize(9).font("Helvetica").text("Seguridad", x0 + 16, yP + 38);
-    doc.fillColor(TEAL).fontSize(24).font("Helvetica-Bold").text(`${reporte.scores.web}/100`, x0 + ancho / 2 + 22, yP + 10);
-    doc.fillColor(GRIS).fontSize(9).font("Helvetica").text("Web / SEO", x0 + ancho / 2 + 22, yP + 38);
+    doc.fillColor(TEAL).fontSize(24).font("Helvetica-Bold").text(`${reporte.scores.correo}/100`, x0 + ancho / 2 + 22, yP + 10);
+    doc.fillColor(GRIS).fontSize(9).font("Helvetica").text("Correo / DNS", x0 + ancho / 2 + 22, yP + 38);
     doc.y = yP + 66;
     doc.fillColor(TINTA).fontSize(10).font("Helvetica-Oblique").text(reporte.resumen, x0, doc.y);
 

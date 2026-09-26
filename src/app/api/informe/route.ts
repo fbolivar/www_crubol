@@ -71,7 +71,7 @@ export async function POST(req: Request) {
     content: pdf,
     contentType: "application/pdf",
   };
-  const resumen = `Dominio: ${reporte.dominio}\nSeguridad: ${reporte.scores.seguridad}/100\nWeb/SEO: ${reporte.scores.web}/100`;
+  const resumen = `Dominio: ${reporte.dominio}\nSeguridad web: ${reporte.scores.seguridad}/100\nCorreo/DNS: ${reporte.scores.correo}/100`;
 
   try {
     // Aviso a Crubol con el lead + PDF.
