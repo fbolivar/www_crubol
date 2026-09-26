@@ -548,7 +548,7 @@ export const pie = {
     correo: empresa.correo,
     ciudad: `${empresa.ciudad}, Colombia`,
   },
-  legal: `${empresa.nombre} · NIT ${empresa.nit} · Matrícula ${empresa.matricula}, ${empresa.camara}.`,
+  legal: empresa.nombre,
 } as const;
 
 // --------------------------------------------------------------------------
