@@ -90,9 +90,12 @@ frontend — COMPLETA. Diseño aprobado por Fernando. Sitio funcional de punta a
   cabeceras de seguridad, certificado SSL/TLS y SEO on-page, con puntajes.
 - NO escanea puertos ni vulnerabilidades (queda para el informe manual con
   autorización). Protección SSRF: rechaza IPs y rangos privados; timeouts.
-- La página de resultados muestra progreso animado, el informe y un formulario que
-  manda el lead + puntajes a info@crubol.com (vía /api/contacto). Verificado con
-  dominios reales; SSRF probado (IP/localhost rechazados).
+- La página de resultados muestra progreso animado, el informe, preguntas frecuentes
+  y un aviso legal (blindaje). El formulario del informe envía a `/api/informe`, que
+  genera un PDF del reporte parcial (pdfkit) y lo manda por correo a info@crubol.com
+  y al visitante. Verificado con dominios reales; SSRF probado (IP/localhost rechazados);
+  PDF válido generado y enviado.
+- Deps nuevas: pdfkit (PDF del reporte).
 - PENDIENTE producción: rate limiting en Vercel para /api/diagnostico y /api/asistente.
 
 ## Widget de WhatsApp y política

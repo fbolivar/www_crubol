@@ -533,11 +533,39 @@ export const diagnosticoResultado = {
     politicaAntes: "Acepto la",
     politicaLink: "política de tratamiento de datos",
     enviar: "Quiero el informe completo →",
-    gracias: "¡Recibido! Un socio de Crubol lo contactará con el informe completo.",
+    gracias:
+      "¡Recibido! Le enviamos el reporte parcial en PDF a su correo y un socio de Crubol lo contactará con el informe completo.",
     error: "No pudimos registrar su solicitud. Intente de nuevo.",
   },
   errorTitulo: "No pudimos analizar el dominio",
   reintentar: "Volver a intentar",
+  faqEyebrow: "Preguntas frecuentes",
+  faqTituloAntes: "Sobre el",
+  faqTituloResaltado: "diagnóstico",
+  faq: [
+    {
+      p: "¿Qué analiza el diagnóstico gratis?",
+      r: "Revisa las cabeceras de seguridad, el certificado SSL/TLS y el SEO on-page (título, metadatos, encabezados e imágenes). Le da un puntaje y qué conviene priorizar primero.",
+    },
+    {
+      p: "¿Tiene costo o compromiso?",
+      r: "No. Es gratis y sin compromiso. Ve el puntaje al instante y, si quiere el informe completo con recomendaciones priorizadas, deja su correo.",
+    },
+    {
+      p: "¿Analizan puertos y vulnerabilidades?",
+      r: "El análisis automático es parcial y no intrusivo. El escaneo profundo de puertos, vulnerabilidades y superficie de exposición lo realizan los socios de forma manual y con su autorización.",
+    },
+    {
+      p: "¿Sirve para cualquier dominio?",
+      r: "Sí, funciona con cualquier sitio accesible por internet: landing, sitio corporativo, e-commerce o blog. Solo ingrese su dominio.",
+    },
+    {
+      p: "¿Es una auditoría profesional?",
+      r: "No. Es un chequeo automático orientativo. Una auditoría formal, con evidencia y alcance definido, es un servicio aparte que ejecutan los socios.",
+    },
+  ],
+  aviso:
+    "Aviso legal — Este diagnóstico es un análisis automatizado y parcial, de carácter meramente informativo y orientativo, generado a partir de información públicamente accesible del dominio mediante solicitudes HTTP y TLS estándar. No constituye una auditoría de seguridad profesional, prueba de penetración ni garantía sobre el estado real de seguridad, disponibilidad o cumplimiento del dominio evaluado. CRUBOL TECHNOLOGY S.A.S. no realiza accesos no autorizados ni pruebas intrusivas y no se responsabiliza por decisiones tomadas con base en este reporte. Al utilizar esta herramienta, usted declara estar autorizado para solicitar el análisis del dominio ingresado y acepta estos términos. Los datos se tratan conforme a nuestra Política de Privacidad.",
 } as const;
 
 // --------------------------------------------------------------------------

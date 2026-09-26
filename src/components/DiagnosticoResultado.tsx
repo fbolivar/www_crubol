@@ -212,6 +212,35 @@ function Informe({ reporte }: { reporte: Reporte }) {
       </p>
 
       <FormularioInforme reporte={reporte} />
+
+      {/* Preguntas frecuentes */}
+      <section className="mt-16">
+        <SectionEyebrow icon={<IconEscudo />} tono="oscuro">
+          {t.faqEyebrow}
+        </SectionEyebrow>
+        <h2 className="mt-3 font-display text-2xl font-bold text-texto sm:text-3xl">
+          {t.faqTituloAntes}{" "}
+          <span className="texto-gradiente">{t.faqTituloResaltado}</span>
+        </h2>
+        <div className="mt-6 divide-y divide-white/10 border-t border-white/10">
+          {t.faq.map((f, i) => (
+            <div key={f.p} className="flex gap-5 py-5">
+              <span className="font-display text-sm font-bold text-cian">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="font-display font-bold text-texto">{f.p}</h3>
+                <p className="mt-1.5 text-sm text-niebla">{f.r}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Aviso legal */}
+      <p className="mt-12 border-t border-white/10 pt-6 text-xs leading-relaxed text-niebla/60">
+        {t.aviso}
+      </p>
     </div>
   );
 }
@@ -226,18 +255,11 @@ function FormularioInforme({ reporte }: { reporte: Reporte }) {
     const correo = String(fd.get("correo") || "").trim();
     if (!nombre || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo) || !fd.get("politica")) return;
     setEstado("enviando");
-    const mensaje = `Solicita el informe completo del diagnóstico.\nDominio: ${reporte.dominio}\nPuntaje seguridad: ${reporte.scores.seguridad}/100\nPuntaje web: ${reporte.scores.web}/100`;
     try {
-      const r = await fetch("/api/contacto", {
+      const r = await fetch("/api/informe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nombre,
-          empresa: reporte.dominio,
-          correo,
-          necesidad: "Informe completo de diagnóstico de dominio",
-          mensaje,
-        }),
+        body: JSON.stringify({ nombre, correo, reporte }),
       });
       setEstado(r.ok ? "ok" : "error");
     } catch {
