@@ -636,6 +636,99 @@ export const pie = {
     ciudad: `${empresa.ciudad}, Colombia`,
   },
   legal: empresa.nombre,
+  privacidad: "Política de privacidad",
+} as const;
+
+// --------------------------------------------------------------------------
+// Política de privacidad (Ley 1581 de 2012)
+// --------------------------------------------------------------------------
+export const politica = {
+  eyebrow: "Legal",
+  titulo: "Política de Tratamiento de Datos Personales",
+  actualizadoLabel: "Última actualización",
+  fecha: "25 de septiembre de 2026",
+  volver: "← Volver al inicio",
+  intro: `En cumplimiento de la Ley Estatutaria 1581 de 2012, el Decreto 1074 de 2015 y demás normas concordantes sobre protección de datos personales en Colombia, ${empresa.nombre} (en adelante, «Crubol») adopta la presente política, que rige el tratamiento de los datos personales que recolectamos a través de este sitio web y de nuestros canales de contacto.`,
+  secciones: [
+    {
+      titulo: "1. Responsable del tratamiento",
+      parrafos: [
+        `${empresa.nombre}, sociedad identificada con NIT ${empresa.nit} y matrícula ${empresa.matricula} de la ${empresa.camara}, con domicilio en ${empresa.ciudad}, Colombia. Correo de contacto para asuntos de datos personales: ${empresa.correo}.`,
+      ],
+    },
+    {
+      titulo: "2. Datos que recolectamos",
+      parrafos: [
+        "Recolectamos únicamente los datos que usted nos proporciona de forma voluntaria al diligenciar nuestros formularios de contacto o al iniciar una conversación por WhatsApp: nombre, correo electrónico, número de teléfono o WhatsApp, empresa, área de interés y el contenido del mensaje que decida enviarnos. No recolectamos datos sensibles ni datos de menores de edad.",
+      ],
+    },
+    {
+      titulo: "3. Finalidad del tratamiento",
+      parrafos: ["Los datos personales se tratan con las siguientes finalidades:"],
+      lista: [
+        "Atender sus solicitudes de contacto, diagnóstico o cotización.",
+        "Comunicarnos con usted por los canales que nos indique (correo o WhatsApp).",
+        "Elaborar y enviar propuestas de servicios que usted haya solicitado.",
+        "Dar seguimiento a la relación comercial o de servicio.",
+      ],
+      cierre:
+        "No vendemos, arrendamos ni compartimos sus datos personales con terceros con fines comerciales. Tampoco los usamos para elaborar perfiles ni para decisiones automatizadas.",
+    },
+    {
+      titulo: "4. Autorización y base legal",
+      parrafos: [
+        "Al enviar un formulario de este sitio o al escribirnos por WhatsApp, usted autoriza de manera previa, expresa e informada el tratamiento de sus datos personales para las finalidades aquí descritas, conforme al artículo 9 de la Ley 1581 de 2012. Esta autorización puede ser revocada en cualquier momento, sin efecto retroactivo.",
+      ],
+    },
+    {
+      titulo: "5. Canales de contacto y terceros",
+      parrafos: [
+        "El contacto se realiza por correo electrónico y por WhatsApp. WhatsApp es un servicio operado por Meta Platforms, Inc.; al comunicarse con nosotros por ese medio, sus datos también se sujetan a las políticas de privacidad de dicho proveedor. Este sitio no utiliza cookies de rastreo publicitario ni herramientas de analítica que identifiquen individualmente a los visitantes.",
+      ],
+    },
+    {
+      titulo: "6. Conservación de los datos",
+      parrafos: [
+        "Conservamos sus datos personales durante el tiempo necesario para atender su solicitud y mantener la relación comercial o de servicio, y por el término adicional que exijan las obligaciones legales aplicables. Una vez cumplidas las finalidades y vencidos dichos términos, procederemos a su supresión segura.",
+      ],
+    },
+    {
+      titulo: "7. Derechos del titular",
+      parrafos: ["Como titular de sus datos personales, usted tiene derecho a:"],
+      lista: [
+        "Conocer, actualizar y rectificar sus datos personales.",
+        "Solicitar prueba de la autorización otorgada.",
+        "Ser informado sobre el uso que se ha dado a sus datos.",
+        "Revocar la autorización y/o solicitar la supresión de sus datos, cuando proceda.",
+        "Acceder de forma gratuita a sus datos personales.",
+        "Presentar quejas ante la Superintendencia de Industria y Comercio (SIC).",
+      ],
+    },
+    {
+      titulo: "8. Cómo ejercer sus derechos",
+      parrafos: [
+        `Puede ejercer sus derechos escribiendo a ${empresa.correo}, indicando su nombre, el derecho que desea ejercer y la información de contacto. Atenderemos las consultas en un término máximo de diez (10) días hábiles y los reclamos en un término máximo de quince (15) días hábiles, conforme a la Ley 1581 de 2012.`,
+      ],
+    },
+    {
+      titulo: "9. Seguridad de la información",
+      parrafos: [
+        "Adoptamos medidas técnicas, humanas y administrativas razonables para proteger sus datos personales frente a acceso no autorizado, pérdida, alteración o divulgación indebida.",
+      ],
+    },
+    {
+      titulo: "10. Vigencia y cambios",
+      parrafos: [
+        "La presente política rige a partir de su publicación y puede ser actualizada para reflejar cambios legales u operativos. Cualquier modificación sustancial se informará a través de este sitio web.",
+      ],
+    },
+    {
+      titulo: "11. Contacto",
+      parrafos: [
+        `Para cualquier inquietud relacionada con el tratamiento de sus datos personales, escríbanos a ${empresa.correo}.`,
+      ],
+    },
+  ],
 } as const;
 
 // --------------------------------------------------------------------------

@@ -5,7 +5,77 @@
  */
 import { empresa, hero as heroEs } from "./content";
 
-export { empresa, whatsapp, seo, diagnosticoResultado } from "./content";
+export { empresa, whatsapp } from "./content";
+
+export const seo = {
+  title: "Crubol Technology · IT & cybersecurity solutions in Bogotá",
+  description:
+    "Infrastructure, cybersecurity and artificial intelligence for mid-sized companies in Colombia. We assess with evidence, fix by priority and stay watching.",
+  url: "https://crubol.com.co",
+} as const;
+
+export const diagnosticoResultado = {
+  eyebrow: "Domain diagnostic · Free",
+  cargando: {
+    mensajes: [
+      "Connecting to the domain…",
+      "Checking security headers…",
+      "Verifying the SSL/TLS certificate…",
+      "Analyzing email (SPF, DKIM, DMARC)…",
+      "Checking reputation and blocklists…",
+      "Calculating your score…",
+    ],
+    nota: "Analyzing security, SSL, email and reputation. Don't close this window.",
+  },
+  labelSeguridad: "Web security",
+  labelWeb: "Email / DNS",
+  de100: "of 100",
+  resultadoDe: "Result for",
+  parcialNota:
+    "This is a partial, automated analysis. Deep scanning of ports, vulnerabilities and exposure surface is performed by the partners manually and with your authorization.",
+  form: {
+    titulo: "Unlock your full report",
+    texto:
+      "Includes deep scanning (ports, vulnerabilities and exposure), the technical audit and prioritized recommendations — leave us your email and a partner helps you prioritize.",
+    nombre: "Your name",
+    correo: "Your email",
+    politicaAntes: "I accept the",
+    politicaLink: "data processing policy",
+    enviar: "I want the full report →",
+    gracias:
+      "Received! We've emailed the partial PDF report to you and a Crubol partner will contact you with the full report.",
+    error: "We couldn't register your request. Please try again.",
+  },
+  errorTitulo: "We couldn't analyze the domain",
+  reintentar: "Try again",
+  faqEyebrow: "Frequently asked questions",
+  faqTituloAntes: "About the",
+  faqTituloResaltado: "diagnostic",
+  faq: [
+    {
+      p: "What does the free diagnostic analyze?",
+      r: "It reviews security headers, the SSL/TLS certificate and email/DNS records (SPF, DKIM, DMARC) plus reputation. It gives you a score and what to prioritize first.",
+    },
+    {
+      p: "Is there a cost or commitment?",
+      r: "No. It's free and no commitment. You see the score instantly and, if you want the full report with prioritized recommendations, you leave your email.",
+    },
+    {
+      p: "Do you scan ports and vulnerabilities?",
+      r: "The automated analysis is partial and non-intrusive. Deep scanning of ports, vulnerabilities and exposure surface is performed by the partners manually and with your authorization.",
+    },
+    {
+      p: "Does it work for any domain?",
+      r: "Yes, it works with any site accessible on the internet: landing page, corporate site, e-commerce or blog. Just enter your domain.",
+    },
+    {
+      p: "Is it a professional audit?",
+      r: "No. It's an orientation-only automated check. A formal audit, with evidence and defined scope, is a separate service performed by the partners.",
+    },
+  ],
+  aviso:
+    "Legal notice — This diagnostic is an automated, partial analysis, of a purely informative and orientative nature, generated from publicly accessible information about the domain via standard HTTP and TLS requests. It does not constitute a professional security audit, a penetration test, or any warranty about the actual state of security, availability or compliance of the evaluated domain. CRUBOL TECHNOLOGY S.A.S. does not perform unauthorized access or intrusive testing and is not responsible for decisions made based on this report. By using this tool, you declare that you are authorized to request the analysis of the entered domain and accept these terms. Data is processed in accordance with our Privacy Policy.",
+} as const;
 
 export const opcionesInteres = [
   "I don't know the state of my technology",
@@ -329,4 +399,94 @@ export const pie = {
     ciudad: `${empresa.ciudad}, Colombia`,
   },
   legal: empresa.nombre,
+  privacidad: "Privacy policy",
+} as const;
+
+export const politica = {
+  eyebrow: "Legal",
+  titulo: "Personal Data Processing Policy",
+  actualizadoLabel: "Last updated",
+  fecha: "September 25, 2026",
+  volver: "← Back to home",
+  intro: `In compliance with Statutory Law 1581 of 2012, Decree 1074 of 2015 and other applicable data-protection rules in Colombia, ${empresa.nombre} (hereinafter, "Crubol") adopts this policy, which governs the processing of the personal data we collect through this website and our contact channels.`,
+  secciones: [
+    {
+      titulo: "1. Data controller",
+      parrafos: [
+        `${empresa.nombre}, a company identified with Tax ID ${empresa.nit} and business registration ${empresa.matricula} of the Bogotá Chamber of Commerce, domiciled in ${empresa.ciudad}, Colombia. Contact email for data-protection matters: ${empresa.correo}.`,
+      ],
+    },
+    {
+      titulo: "2. Data we collect",
+      parrafos: [
+        "We only collect the data you provide voluntarily when filling out our contact forms or starting a conversation on WhatsApp: name, email address, phone or WhatsApp number, company, area of interest and the content of the message you choose to send us. We do not collect sensitive data or data from minors.",
+      ],
+    },
+    {
+      titulo: "3. Purpose of processing",
+      parrafos: ["Personal data is processed for the following purposes:"],
+      lista: [
+        "To respond to your contact, assessment or quote requests.",
+        "To communicate with you through the channels you indicate (email or WhatsApp).",
+        "To prepare and send service proposals you have requested.",
+        "To follow up on the commercial or service relationship.",
+      ],
+      cierre:
+        "We do not sell, rent or share your personal data with third parties for commercial purposes. Nor do we use it for profiling or automated decisions.",
+    },
+    {
+      titulo: "4. Authorization and legal basis",
+      parrafos: [
+        "By submitting a form on this site or writing to us on WhatsApp, you grant prior, express and informed authorization for the processing of your personal data for the purposes described here, pursuant to Article 9 of Law 1581 of 2012. This authorization may be revoked at any time, without retroactive effect.",
+      ],
+    },
+    {
+      titulo: "5. Contact channels and third parties",
+      parrafos: [
+        "Contact is made by email and WhatsApp. WhatsApp is a service operated by Meta Platforms, Inc.; when you communicate with us through it, your data is also subject to that provider's privacy policies. This site does not use advertising tracking cookies or analytics tools that individually identify visitors.",
+      ],
+    },
+    {
+      titulo: "6. Data retention",
+      parrafos: [
+        "We keep your personal data for as long as necessary to handle your request and maintain the commercial or service relationship, and for the additional period required by applicable legal obligations. Once the purposes are fulfilled and those periods expire, we securely delete it.",
+      ],
+    },
+    {
+      titulo: "7. Rights of the data subject",
+      parrafos: ["As the owner of your personal data, you have the right to:"],
+      lista: [
+        "Access, update and rectify your personal data.",
+        "Request proof of the authorization granted.",
+        "Be informed about the use given to your data.",
+        "Revoke the authorization and/or request deletion of your data, where applicable.",
+        "Access your personal data free of charge.",
+        "File complaints with the Superintendency of Industry and Commerce (SIC).",
+      ],
+    },
+    {
+      titulo: "8. How to exercise your rights",
+      parrafos: [
+        `You may exercise your rights by writing to ${empresa.correo}, stating your name, the right you wish to exercise and your contact information. We will handle inquiries within a maximum of ten (10) business days and complaints within a maximum of fifteen (15) business days, pursuant to Law 1581 of 2012.`,
+      ],
+    },
+    {
+      titulo: "9. Information security",
+      parrafos: [
+        "We adopt reasonable technical, human and administrative measures to protect your personal data against unauthorized access, loss, alteration or improper disclosure.",
+      ],
+    },
+    {
+      titulo: "10. Term and changes",
+      parrafos: [
+        "This policy is effective from its publication and may be updated to reflect legal or operational changes. Any substantial modification will be communicated through this website.",
+      ],
+    },
+    {
+      titulo: "11. Contact",
+      parrafos: [
+        `For any concern related to the processing of your personal data, write to us at ${empresa.correo}.`,
+      ],
+    },
+  ],
 } as const;

@@ -1,39 +1,24 @@
-import { IdiomaProvider } from "@/i18n";
-import { WhatsAppProvider } from "@/components/WhatsAppModal";
-import { Asistente } from "@/components/Asistente";
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { Nosotros } from "@/components/Nosotros";
-import { Contadores } from "@/components/Contadores";
-import { Servicios } from "@/components/Servicios";
-import { PorQue } from "@/components/PorQue";
-import { BigMarquee } from "@/components/BigMarquee";
-import { Proceso } from "@/components/Proceso";
-import { Modalidades } from "@/components/Modalidades";
-import { DiagnosticoPopup } from "@/components/DiagnosticoPopup";
-import { Contacto } from "@/components/Contacto";
-import { Footer } from "@/components/Footer";
+import type { Metadata } from "next";
+import { seo, empresa } from "@/content";
+import { Landing } from "@/components/Landing";
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  alternates: {
+    canonical: "/",
+    languages: { "es-CO": "/", en: "/en", "x-default": "/" },
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_CO",
+    url: seo.url,
+    siteName: empresa.nombre,
+    title: seo.title,
+    description: seo.description,
+  },
+};
 
 export default function Home() {
-  return (
-    <IdiomaProvider>
-      <WhatsAppProvider>
-        <Header />
-      <main>
-        <Hero />
-        <Nosotros />
-        <Contadores />
-        <Servicios />
-        <PorQue />
-        <BigMarquee />
-        <Proceso />
-        <Modalidades />
-        <Contacto />
-      </main>
-      <Footer />
-        <Asistente />
-        <DiagnosticoPopup />
-      </WhatsAppProvider>
-    </IdiomaProvider>
-  );
+  return <Landing lang="es" />;
 }

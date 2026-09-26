@@ -1,10 +1,13 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useIdioma } from "@/i18n";
 
-/** Toggle de idioma ES / EN. */
+/** Toggle de idioma ES / EN (navega entre / y /en). */
 export function LanguageToggle({ className = "" }: { className?: string }) {
-  const { idioma, setIdioma } = useIdioma();
+  const idioma = useIdioma();
+  const router = useRouter();
+
   return (
     <div
       role="group"
@@ -17,7 +20,7 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
           <button
             key={l}
             type="button"
-            onClick={() => setIdioma(l)}
+            onClick={() => router.push(l === "en" ? "/en" : "/")}
             aria-pressed={activo}
             className={`rounded-full px-2.5 py-1 font-mono text-xs uppercase transition-colors ${
               activo ? "bg-menta text-abismo" : "text-niebla hover:text-texto"

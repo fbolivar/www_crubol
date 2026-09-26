@@ -44,6 +44,7 @@ export async function POST(req: Request) {
 
   const nombre = String(body.nombre ?? "").trim().slice(0, 200);
   const correo = String(body.correo ?? "").trim().slice(0, 200);
+  const lang: "es" | "en" = body.lang === "en" ? "en" : "es";
   const reporte = body.reporte;
 
   if (!nombre || !esCorreo(correo)) {
@@ -55,7 +56,7 @@ export async function POST(req: Request) {
 
   let pdf: Buffer;
   try {
-    pdf = await generarInformePDF({ nombre, dominio: reporte.dominio }, reporte);
+    pdf = await generarInformePDF({ nombre, dominio: reporte.dominio }, reporte, lang);
   } catch (error) {
     console.error("Error generando PDF:", error);
     return Response.json({ error: "No pudimos generar el reporte." }, { status: 500 });
@@ -93,18 +94,41 @@ export async function POST(req: Request) {
       </tr>
     </table>`;
 
+  const vt =
+    lang === "en"
+      ? {
+          sub: "DOMAIN DIAGNOSTIC · PARTIAL REPORT",
+          saludo: `Hi ${esc(nombre)},`,
+          adjunto: `Attached is the partial diagnostic report for <strong>${esc(reporte.dominio)}</strong>.`,
+          cierre:
+            "A Crubol partner will contact you for the <strong>full report</strong>: deep scanning of ports, vulnerabilities and prioritized recommendations.",
+          pie: "Full details are in the attached PDF. Crubol Technology S.A.S. · info@crubol.com · crubol.com.co",
+          subject: `Your ${reporte.dominio} diagnostic — Crubol`,
+          textPlano: `Hi ${nombre},\n\nAttached is the partial diagnostic report for ${reporte.dominio}.\n${resumen}\n\nA Crubol partner will contact you for the full report (deep scanning of ports, vulnerabilities and prioritized recommendations).\n\nCrubol Technology S.A.S. · info@crubol.com`,
+        }
+      : {
+          sub: "DIAGNÓSTICO DE DOMINIO · REPORTE PARCIAL",
+          saludo: `Hola ${esc(nombre)},`,
+          adjunto: `Adjuntamos el reporte parcial del diagnóstico de <strong>${esc(reporte.dominio)}</strong>.`,
+          cierre:
+            "Un socio de Crubol lo contactará para el <strong>informe completo</strong>: escaneo profundo de puertos, vulnerabilidades y recomendaciones priorizadas.",
+          pie: "El detalle completo está en el PDF adjunto. Crubol Technology S.A.S. · info@crubol.com · crubol.com.co",
+          subject: `Su diagnóstico de ${reporte.dominio} — Crubol`,
+          textPlano: `Hola ${nombre},\n\nAdjuntamos el reporte parcial del diagnóstico de ${reporte.dominio}.\n${resumen}\n\nUn socio de Crubol lo contactará para el informe completo (escaneo profundo de puertos, vulnerabilidades y recomendaciones priorizadas).\n\nCrubol Technology S.A.S. · info@crubol.com`,
+        };
+
   const htmlVisitante = `
   <div style="font-family:Arial,Helvetica,sans-serif;color:#16323A;max-width:560px;margin:0 auto">
     <div style="background:#061E24;padding:20px 24px;border-radius:12px 12px 0 0">
       <span style="color:#E6F2F4;font-size:20px;font-weight:700">Crubol Technology</span>
-      <span style="color:#15AABF;font-size:12px;display:block;margin-top:4px">DIAGNÓSTICO DE DOMINIO · REPORTE PARCIAL</span>
+      <span style="color:#15AABF;font-size:12px;display:block;margin-top:4px">${vt.sub}</span>
     </div>
     <div style="border:1px solid #DDE9EC;border-top:none;border-radius:0 0 12px 12px;padding:24px">
-      <p style="margin:0 0 8px">Hola ${esc(nombre)},</p>
-      <p style="margin:0 0 4px;color:#48626B">Adjuntamos el reporte parcial del diagnóstico de <strong>${esc(reporte.dominio)}</strong>.</p>
+      <p style="margin:0 0 8px">${vt.saludo}</p>
+      <p style="margin:0 0 4px;color:#48626B">${vt.adjunto}</p>
       ${tarjetas}
-      <p style="margin:0 0 16px;color:#48626B">Un socio de Crubol lo contactará para el <strong>informe completo</strong>: escaneo profundo de puertos, vulnerabilidades y recomendaciones priorizadas.</p>
-      <p style="margin:0;font-size:12px;color:#9FC2C9">El detalle completo está en el PDF adjunto. Crubol Technology S.A.S. · info@crubol.com · crubol.com.co</p>
+      <p style="margin:0 0 16px;color:#48626B">${vt.cierre}</p>
+      <p style="margin:0;font-size:12px;color:#9FC2C9">${vt.pie}</p>
     </div>
   </div>`;
 
@@ -135,8 +159,8 @@ export async function POST(req: Request) {
       from: SMTP_FROM || SMTP_USER,
       to: correo,
       replyTo: SMTP_TO || SMTP_USER,
-      subject: `Su diagnóstico de ${reporte.dominio} — Crubol`,
-      text: `Hola ${nombre},\n\nAdjuntamos el reporte parcial del diagnóstico de ${reporte.dominio}.\n${resumen}\n\nUn socio de Crubol lo contactará para el informe completo (escaneo profundo de puertos, vulnerabilidades y recomendaciones priorizadas).\n\nCrubol Technology S.A.S. · info@crubol.com`,
+      subject: vt.subject,
+      text: vt.textPlano,
       html: htmlVisitante,
       attachments: [adjunto],
     }),

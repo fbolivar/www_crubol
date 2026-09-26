@@ -171,7 +171,109 @@ async function enListaNegra(ip: string): Promise<boolean | null> {
 // --------------------------------------------------------------------------
 // Análisis principal
 // --------------------------------------------------------------------------
-export async function analizarDominio(dominio: string): Promise<Reporte> {
+type Lang = "es" | "en";
+
+// Diccionario de textos del reporte (títulos, valores y consejos).
+const STR = {
+  es: {
+    gSeg: "Seguridad y cabeceras",
+    gSsl: "Certificado SSL/TLS",
+    gMail: "Correo y dominio (SPF · DKIM · DMARC)",
+    // valores comunes
+    present: "Presente", notFoundM: "No encontrado", notFoundF: "No encontrada",
+    unknown: "Desconocida", unknownM: "Desconocido", notVerifiable: "No verificable",
+    yes: "Sí", noRedir: "No redirige", hidden: "Oculta", published: "Publicado",
+    trusted: "Confiable", days: "días restantes", noConfig: "No configurado",
+    restrictsTo: "Restringe a", noIssuerRestriction: "Sin restricción de emisor",
+    noCookies: "Sin cookies", withoutSecure: "sin 'Secure' de",
+    respHttps: "El sitio responde por HTTPS", noHttps: "No responde por HTTPS",
+    noMx: "Sin MX (no recibe correo)", spfSoft: "Presente pero permisivo (~all/+all)",
+    spfStrict: "Presente y estricto", dkimYes: "Detectado (selector", dkimNo: "No detectado en selectores comunes",
+    policy: "Política", defined: "definida", blacklisted: "Aparece en una lista negra",
+    notBlacklisted: "Sin registros en listas negras",
+    // títulos
+    tHttps: "HTTPS activo", tRedir: "Redirección HTTP → HTTPS",
+    tHsts: "HSTS (Strict-Transport-Security)", tCsp: "Content-Security-Policy",
+    tXcto: "X-Content-Type-Options", tClick: "Protección de clickjacking",
+    tRef: "Referrer-Policy", tCookies: "Cookies seguras", tTech: "Exposición de tecnología",
+    tSecTxt: "security.txt", tCertValid: "Certificado válido", tCertVig: "Vigencia del certificado",
+    tTls: "Versión de TLS", tCaa: "Registro CAA", tIssuer: "Emisor", tMx: "Registros MX",
+    tRep: "Reputación (listas negras)",
+    // consejos
+    cHttps: "Todo el tráfico debe ir cifrado por HTTPS.",
+    cRedir: "El acceso por HTTP debe redirigir siempre a HTTPS.",
+    cHsts: "Obliga al navegador a usar siempre HTTPS.",
+    cCsp: "Reduce el riesgo de inyección de scripts (XSS).",
+    cXcto: "Evita que el navegador adivine el tipo de contenido.",
+    cClick: "X-Frame-Options o CSP frame-ancestors evitan el secuestro de clics.",
+    cRef: "Controla qué información de origen se comparte.",
+    cCookies: "Las cookies deben llevar Secure, HttpOnly y SameSite.",
+    cTech: "Revelar software y versiones facilita ataques dirigidos.",
+    cSecTxt: "Un /.well-known/security.txt facilita el reporte responsable de fallas.",
+    cCertValid: "Un certificado válido protege la identidad del sitio.",
+    cCertVig: "Renueve antes de que expire para evitar caídas y alertas.",
+    cTls: "Use TLS 1.2 o 1.3; versiones anteriores son inseguras.",
+    cCaa: "CAA limita qué autoridades pueden emitir certificados para su dominio.",
+    cIssuer: "Autoridad certificadora que respalda el certificado.",
+    cMx: "Los MX definen quién recibe el correo del dominio.",
+    cSpf: "SPF declara qué servidores pueden enviar en su nombre; use -all.",
+    cDkim: "DKIM firma sus correos; evita suplantación. (Sondeo parcial de selectores.)",
+    cDmarc: "DMARC protege su marca del phishing; apunte a p=quarantine o reject.",
+    cRep: "Estar en listas negras (DNSBL) daña la entregabilidad del correo.",
+    rHigh: "Buena base — con ajustes menores queda sólido.",
+    rMid: "Hay varios puntos por reforzar; conviene priorizar.",
+    rLow: "Hay mucho por mejorar — y eso es buena noticia: gana fácil priorizando.",
+  },
+  en: {
+    gSeg: "Security & headers",
+    gSsl: "SSL/TLS certificate",
+    gMail: "Email & domain (SPF · DKIM · DMARC)",
+    present: "Present", notFoundM: "Not found", notFoundF: "Not found",
+    unknown: "Unknown", unknownM: "Unknown", notVerifiable: "Not verifiable",
+    yes: "Yes", noRedir: "Does not redirect", hidden: "Hidden", published: "Published",
+    trusted: "Trusted", days: "days remaining", noConfig: "Not configured",
+    restrictsTo: "Restricts to", noIssuerRestriction: "No issuer restriction",
+    noCookies: "No cookies", withoutSecure: "without 'Secure' of",
+    respHttps: "The site responds over HTTPS", noHttps: "Does not respond over HTTPS",
+    noMx: "No MX (does not receive email)", spfSoft: "Present but permissive (~all/+all)",
+    spfStrict: "Present and strict", dkimYes: "Detected (selector", dkimNo: "Not detected in common selectors",
+    policy: "Policy", defined: "defined", blacklisted: "Listed on a blocklist",
+    notBlacklisted: "No records on blocklists",
+    tHttps: "HTTPS active", tRedir: "HTTP → HTTPS redirect",
+    tHsts: "HSTS (Strict-Transport-Security)", tCsp: "Content-Security-Policy",
+    tXcto: "X-Content-Type-Options", tClick: "Clickjacking protection",
+    tRef: "Referrer-Policy", tCookies: "Secure cookies", tTech: "Technology disclosure",
+    tSecTxt: "security.txt", tCertValid: "Valid certificate", tCertVig: "Certificate validity",
+    tTls: "TLS version", tCaa: "CAA record", tIssuer: "Issuer", tMx: "MX records",
+    tRep: "Reputation (blocklists)",
+    cHttps: "All traffic must be encrypted over HTTPS.",
+    cRedir: "HTTP access must always redirect to HTTPS.",
+    cHsts: "Forces the browser to always use HTTPS.",
+    cCsp: "Reduces the risk of script injection (XSS).",
+    cXcto: "Prevents the browser from guessing the content type.",
+    cClick: "X-Frame-Options or CSP frame-ancestors prevent click hijacking.",
+    cRef: "Controls what origin information is shared.",
+    cCookies: "Cookies should carry Secure, HttpOnly and SameSite.",
+    cTech: "Revealing software and versions makes targeted attacks easier.",
+    cSecTxt: "A /.well-known/security.txt enables responsible vulnerability reporting.",
+    cCertValid: "A valid certificate protects the site's identity.",
+    cCertVig: "Renew before it expires to avoid outages and warnings.",
+    cTls: "Use TLS 1.2 or 1.3; earlier versions are insecure.",
+    cCaa: "CAA limits which authorities can issue certificates for your domain.",
+    cIssuer: "Certificate authority backing the certificate.",
+    cMx: "MX records define who receives the domain's email.",
+    cSpf: "SPF declares which servers may send on your behalf; use -all.",
+    cDkim: "DKIM signs your email; prevents spoofing. (Partial selector probe.)",
+    cDmarc: "DMARC protects your brand from phishing; aim for p=quarantine or reject.",
+    cRep: "Being on blocklists (DNSBL) harms email deliverability.",
+    rHigh: "Good baseline — a few minor tweaks and it's solid.",
+    rMid: "Several points to reinforce; worth prioritizing.",
+    rLow: "Plenty to improve — and that's good news: easy wins by prioritizing.",
+  },
+} as const;
+
+export async function analizarDominio(dominio: string, lang: Lang = "es"): Promise<Reporte> {
+  const D = STR[lang];
   // Guarda previa contra SSRF: valida que el dominio no resuelva a IP privada
   // ANTES de cualquier conexión (fetch, TLS o DNSBL).
   await guardarHost(dominio);
@@ -199,35 +301,28 @@ export async function analizarDominio(dominio: string): Promise<Reporte> {
   const cookies = (h.getSetCookie?.() ?? []) as string[];
   const cookiesInseguras = cookies.filter((c) => !/;\s*secure/i.test(c)).length;
   const seg: Check[] = [
-    check("HTTPS activo", urlFinal.startsWith("https://") ? "ok" : "fail",
-      urlFinal.startsWith("https://") ? "El sitio responde por HTTPS" : "No responde por HTTPS",
-      "Todo el tráfico debe ir cifrado por HTTPS."),
-    check("Redirección HTTP → HTTPS", redir === null ? "warn" : redir ? "ok" : "fail",
-      redir === null ? "No verificable" : redir ? "Sí" : "No redirige",
-      "El acceso por HTTP debe redirigir siempre a HTTPS."),
-    check("HSTS (Strict-Transport-Security)", tiene("strict-transport-security") ? "ok" : "fail",
-      tiene("strict-transport-security") ? "Presente" : "No encontrado",
-      "Obliga al navegador a usar siempre HTTPS."),
-    check("Content-Security-Policy", tiene("content-security-policy") ? "ok" : "warn",
-      tiene("content-security-policy") ? "Presente" : "No encontrada",
-      "Reduce el riesgo de inyección de scripts (XSS)."),
-    check("X-Content-Type-Options", h.get("x-content-type-options")?.toLowerCase() === "nosniff" ? "ok" : "warn",
-      h.get("x-content-type-options") || "No encontrado", "Evita que el navegador adivine el tipo de contenido."),
-    check("Protección de clickjacking",
+    check(D.tHttps, urlFinal.startsWith("https://") ? "ok" : "fail",
+      urlFinal.startsWith("https://") ? D.respHttps : D.noHttps, D.cHttps),
+    check(D.tRedir, redir === null ? "warn" : redir ? "ok" : "fail",
+      redir === null ? D.notVerifiable : redir ? D.yes : D.noRedir, D.cRedir),
+    check(D.tHsts, tiene("strict-transport-security") ? "ok" : "fail",
+      tiene("strict-transport-security") ? D.present : D.notFoundM, D.cHsts),
+    check(D.tCsp, tiene("content-security-policy") ? "ok" : "warn",
+      tiene("content-security-policy") ? D.present : D.notFoundF, D.cCsp),
+    check(D.tXcto, h.get("x-content-type-options")?.toLowerCase() === "nosniff" ? "ok" : "warn",
+      h.get("x-content-type-options") || D.notFoundM, D.cXcto),
+    check(D.tClick,
       tiene("x-frame-options") || /frame-ancestors/i.test(h.get("content-security-policy") || "") ? "ok" : "warn",
-      tiene("x-frame-options") ? h.get("x-frame-options")! : "No encontrado",
-      "X-Frame-Options o CSP frame-ancestors evitan el secuestro de clics."),
-    check("Referrer-Policy", tiene("referrer-policy") ? "ok" : "warn",
-      h.get("referrer-policy") || "No encontrada", "Controla qué información de origen se comparte."),
-    check("Cookies seguras", cookies.length === 0 ? "ok" : cookiesInseguras === 0 ? "ok" : "warn",
-      cookies.length === 0 ? "Sin cookies" : `${cookiesInseguras} sin 'Secure' de ${cookies.length}`,
-      "Las cookies deben llevar Secure, HttpOnly y SameSite."),
-    check("Exposición de tecnología",
+      tiene("x-frame-options") ? h.get("x-frame-options")! : D.notFoundM, D.cClick),
+    check(D.tRef, tiene("referrer-policy") ? "ok" : "warn",
+      h.get("referrer-policy") || D.notFoundF, D.cRef),
+    check(D.tCookies, cookies.length === 0 ? "ok" : cookiesInseguras === 0 ? "ok" : "warn",
+      cookies.length === 0 ? D.noCookies : `${cookiesInseguras} ${D.withoutSecure} ${cookies.length}`,
+      D.cCookies),
+    check(D.tTech,
       tiene("x-powered-by") || /\d/.test(h.get("server") || "") ? "warn" : "ok",
-      h.get("x-powered-by") || h.get("server") || "Oculta",
-      "Revelar software y versiones facilita ataques dirigidos."),
-    check("security.txt", secTxt ? "ok" : "warn", secTxt ? "Publicado" : "No encontrado",
-      "Un /.well-known/security.txt facilita el reporte responsable de fallas."),
+      h.get("x-powered-by") || h.get("server") || D.hidden, D.cTech),
+    check(D.tSecTxt, secTxt ? "ok" : "warn", secTxt ? D.published : D.notFoundM, D.cSecTxt),
   ];
 
   // ---- Certificado SSL/TLS ----
@@ -235,23 +330,15 @@ export async function analizarDominio(dominio: string): Promise<Reporte> {
   const caaEmisores = caa.map((c) => c.issue || c.issuewild).filter(Boolean);
   const caaRestringe = caaEmisores.length > 0;
   const ssl: Check[] = [
-    check("Certificado válido", tlsInfo.ok ? "ok" : "fail", tlsInfo.ok ? "Confiable" : "No verificable",
-      "Un certificado válido protege la identidad del sitio."),
-    check("Vigencia del certificado",
+    check(D.tCertValid, tlsInfo.ok ? "ok" : "fail", tlsInfo.ok ? D.trusted : D.notVerifiable, D.cCertValid),
+    check(D.tCertVig,
       tlsInfo.diasRestantes === null ? "warn" : tlsInfo.diasRestantes < 15 ? "fail" : tlsInfo.diasRestantes < 30 ? "warn" : "ok",
-      tlsInfo.diasRestantes === null ? "Desconocida" : `${tlsInfo.diasRestantes} días restantes`,
-      "Renueve antes de que expire para evitar caídas y alertas."),
-    check("Versión de TLS", protoOk ? "ok" : "warn", tlsInfo.protocolo || "Desconocida",
-      "Use TLS 1.2 o 1.3; versiones anteriores son inseguras."),
-    check("Registro CAA", caaRestringe ? "ok" : "warn",
-      caa.length === 0
-        ? "No configurado"
-        : caaRestringe
-          ? `Restringe a: ${caaEmisores.join(", ")}`
-          : "Sin restricción de emisor",
-      "CAA limita qué autoridades pueden emitir certificados para su dominio."),
-    check("Emisor", tlsInfo.emisor ? "ok" : "warn", tlsInfo.emisor || "Desconocido",
-      "Autoridad certificadora que respalda el certificado."),
+      tlsInfo.diasRestantes === null ? D.unknown : `${tlsInfo.diasRestantes} ${D.days}`, D.cCertVig),
+    check(D.tTls, protoOk ? "ok" : "warn", tlsInfo.protocolo || D.unknown, D.cTls),
+    check(D.tCaa, caaRestringe ? "ok" : "warn",
+      caa.length === 0 ? D.noConfig : caaRestringe ? `${D.restrictsTo}: ${caaEmisores.join(", ")}` : D.noIssuerRestriction,
+      D.cCaa),
+    check(D.tIssuer, tlsInfo.emisor ? "ok" : "warn", tlsInfo.emisor || D.unknownM, D.cIssuer),
   ];
 
   // ---- Correo y dominio ----
@@ -260,7 +347,6 @@ export async function analizarDominio(dominio: string): Promise<Reporte> {
   const dmarc = dmarcTxts.find((t) => /^v=DMARC1/i.test(t)) || "";
   const dmarcPol = (dmarc.match(/p=(\w+)/i)?.[1] || "").toLowerCase();
 
-  // DKIM: sondeo de selectores comunes
   const dkimHits = await Promise.all(
     SELECTORES.map((s) => txt(`${s}._domainkey.${dominio}`).then((r) => ({ s, r }))),
   );
@@ -271,37 +357,32 @@ export async function analizarDominio(dominio: string): Promise<Reporte> {
   const listaNegra = await enListaNegra(ip);
 
   const correo: Check[] = [
-    check("Registros MX", mx.length > 0 ? "ok" : "warn",
-      mx.length > 0 ? `${mxHost}${proveedor ? ` (${proveedor})` : ""}` : "Sin MX (no recibe correo)",
-      "Los MX definen quién recibe el correo del dominio."),
+    check(D.tMx, mx.length > 0 ? "ok" : "warn",
+      mx.length > 0 ? `${mxHost}${proveedor ? ` (${proveedor})` : ""}` : D.noMx, D.cMx),
     check("SPF", !spf ? "fail" : spfSuave ? "warn" : "ok",
-      !spf ? "No encontrado" : spfSuave ? "Presente pero permisivo (~all/+all)" : "Presente y estricto",
-      "SPF declara qué servidores pueden enviar en su nombre; use -all."),
+      !spf ? D.notFoundM : spfSuave ? D.spfSoft : D.spfStrict, D.cSpf),
     check("DKIM", dkimSel ? "ok" : "warn",
-      dkimSel ? `Detectado (selector ${dkimSel})` : "No detectado en selectores comunes",
-      "DKIM firma sus correos; evita suplantación. (Sondeo parcial de selectores.)"),
+      dkimSel ? `${D.dkimYes} ${dkimSel})` : D.dkimNo, D.cDkim),
     check("DMARC", !dmarc ? "fail" : dmarcPol === "reject" || dmarcPol === "quarantine" ? "ok" : "warn",
-      !dmarc ? "No encontrado" : `Política: ${dmarcPol || "definida"}`,
-      "DMARC protege su marca del phishing; apunte a p=quarantine o reject."),
-    check("Reputación (listas negras)",
-      listaNegra === null ? "warn" : listaNegra ? "fail" : "ok",
-      listaNegra === null ? "No verificable" : listaNegra ? "Aparece en una lista negra" : "Sin registros en listas negras",
-      "Estar en listas negras (DNSBL) daña la entregabilidad del correo."),
+      !dmarc ? D.notFoundM : `${D.policy}: ${dmarcPol || D.defined}`, D.cDmarc),
+    check(D.tRep, listaNegra === null ? "warn" : listaNegra ? "fail" : "ok",
+      listaNegra === null ? D.notVerifiable : listaNegra ? D.blacklisted : D.notBlacklisted, D.cRep),
   ];
 
   const scoreSeg = puntaje([...seg, ...ssl]);
   const scoreCorreo = puntaje(correo);
+  const media = Math.round((scoreSeg + scoreCorreo) / 2);
 
   return {
     dominio,
     urlFinal,
     scores: { seguridad: scoreSeg, correo: scoreCorreo },
-    resumen: resumenDe(Math.round((scoreSeg + scoreCorreo) / 2)),
-    meta: { servidor: h.get("server") || "Oculto", tls: tlsInfo.protocolo || "—", ip: ip || "—" },
+    resumen: media >= 80 ? D.rHigh : media >= 55 ? D.rMid : D.rLow,
+    meta: { servidor: h.get("server") || D.hidden, tls: tlsInfo.protocolo || "—", ip: ip || "—" },
     grupos: [
-      { titulo: "Seguridad y cabeceras", checks: seg },
-      { titulo: "Certificado SSL/TLS", checks: ssl },
-      { titulo: "Correo y dominio (SPF · DKIM · DMARC)", checks: correo },
+      { titulo: D.gSeg, checks: seg },
+      { titulo: D.gSsl, checks: ssl },
+      { titulo: D.gMail, checks: correo },
     ],
   };
 }
@@ -313,9 +394,4 @@ function puntaje(checks: Check[]): number {
   if (checks.length === 0) return 0;
   const pts = checks.reduce((a, c) => a + (c.estado === "ok" ? 1 : c.estado === "warn" ? 0.4 : 0), 0);
   return Math.round((pts / checks.length) * 100);
-}
-function resumenDe(score: number): string {
-  if (score >= 80) return "Buena base — con ajustes menores queda sólido.";
-  if (score >= 55) return "Hay varios puntos por reforzar; conviene priorizar.";
-  return "Hay mucho por mejorar — y eso es buena noticia: gana fácil priorizando.";
 }

@@ -16,6 +16,7 @@ export async function POST(req: Request) {
   }
 
   const dominio = normalizarDominio(String((body as { dominio?: unknown })?.dominio ?? ""));
+  const lang: "es" | "en" = (body as { lang?: unknown })?.lang === "en" ? "en" : "es";
   if (!dominio) {
     return Response.json(
       { error: "Ingrese un dominio válido (por ejemplo, empresa.com)." },
@@ -24,7 +25,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    const reporte = await analizarDominio(dominio);
+    const reporte = await analizarDominio(dominio, lang);
     return Response.json({ reporte });
   } catch (error) {
     const msg = error instanceof Error ? error.message : "";

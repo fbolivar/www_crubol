@@ -12,7 +12,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useC } from "@/i18n";
+import { useC, useIdioma } from "@/i18n";
 import { enlaceWhatsApp } from "@/lib/whatsapp";
 import { indicativos } from "@/lib/indicativos";
 import { IconCerrar, IconWhatsApp } from "./ui/Icons";
@@ -36,6 +36,7 @@ type Errores = Partial<Record<"nombre" | "correo" | "telefono", string>>;
 
 export function WhatsAppProvider({ children }: { children: ReactNode }) {
   const { whatsappForm } = useC();
+  const idioma = useIdioma();
   const [abierto, setAbierto] = useState(false);
   const [contexto, setContexto] = useState("");
   const [errores, setErrores] = useState<Errores>({});
@@ -291,7 +292,7 @@ export function WhatsAppProvider({ children }: { children: ReactNode }) {
                   <p className="text-center text-xs text-niebla">
                     {whatsappForm.legalAntes}{" "}
                     <Link
-                      href="/politica-privacidad"
+                      href={idioma === "en" ? "/politica-privacidad?lang=en" : "/politica-privacidad"}
                       className="text-menta underline-offset-2 hover:underline"
                       onClick={cerrar}
                     >

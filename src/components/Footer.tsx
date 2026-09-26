@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useC } from "@/i18n";
+import { useC, useIdioma } from "@/i18n";
 import { AbrirDiagnostico } from "./AbrirDiagnostico";
 
 export function Footer() {
   const { pie, empresa } = useC();
+  const idioma = useIdioma();
+  const hrefPriv = idioma === "en" ? "/politica-privacidad?lang=en" : "/politica-privacidad";
   return (
     <footer className="border-t border-white/10 bg-abismo">
       <div className="mx-auto max-w-6xl px-4 py-14">
@@ -72,10 +74,10 @@ export function Footer() {
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-mono text-xs text-niebla/70">{pie.legal}</p>
             <a
-              href="/politica-privacidad"
+              href={hrefPriv}
               className="text-xs text-niebla transition-colors hover:text-texto"
             >
-              Política de privacidad
+              {pie.privacidad}
             </a>
           </div>
         </div>

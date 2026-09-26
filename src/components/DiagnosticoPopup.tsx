@@ -8,7 +8,7 @@ import {
   type FormEvent,
 } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useC } from "@/i18n";
+import { useC, useIdioma } from "@/i18n";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { Glow, HexSolid } from "./ui/Decor";
 import { IconEscudo, IconCerrar } from "./ui/Icons";
@@ -29,6 +29,7 @@ function normalizarDominio(entrada: string): string | null {
 
 export function DiagnosticoPopup() {
   const { diagnostico } = useC();
+  const idioma = useIdioma();
   const reduce = useReducedMotion();
   const [abierto, setAbierto] = useState(false);
   const [valor, setValor] = useState("");
@@ -105,7 +106,7 @@ export function DiagnosticoPopup() {
     setError("");
     cerrar();
     // El análisis y el resultado se muestran en una pestaña nueva.
-    window.open(`/diagnostico?d=${encodeURIComponent(dominio)}`, "_blank", "noopener");
+    window.open(`/diagnostico?d=${encodeURIComponent(dominio)}&lang=${idioma}`, "_blank", "noopener");
   };
 
   const dur = reduce ? 0 : 0.25;
