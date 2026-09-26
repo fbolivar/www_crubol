@@ -15,6 +15,17 @@ rama main). Variables de entorno cargadas. Verificado en vivo: home/páginas 200
 headers de seguridad, asistente IA, diagnóstico, formulario y envío de PDF — todos OK.
 Repo público en github.com/fbolivar/www_crubol. Guía en `docs/DEPLOY.md`.
 
+## Bilingüe ES/EN (2026-09-26)
+
+- Toggle ES/EN en el header. i18n de cliente por Context (`src/i18n.tsx`):
+  `content.ts` (ES) / `content-en.ts` (EN), `useC()` / `useIdioma()`.
+- SEO por rutas: `/` (ES) y `/en` (EN) renderizan `src/components/Landing.tsx`
+  con hreflang alternates; `sitemap.ts` incluye ambas.
+- Bilingües también: política de privacidad y página de resultado del diagnóstico
+  (por `?lang=`), el informe PDF (`informe-pdf.ts`) y los hallazgos del analizador
+  (`diagnostico.ts` con diccionario `STR`). El asistente responde en el idioma del
+  visitante. Verificado: `tsc` y `next build` limpios; PDF EN enviado OK.
+
 ## Pendientes post-lanzamiento
 
 - Dominio crubol.com.co: agregar en Vercel → Domains y apuntar DNS (aún no resuelve).
