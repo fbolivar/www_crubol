@@ -10,8 +10,15 @@ Tailwind 4 + Framer Motion. Sin Supabase, sin Stripe, sin base de datos (ver ADR
 
 ## Fase actual
 
-seguridad — auditoría hecha. Veredicto APTO CON CONDICIONES
-(`docs/seguridad/AUD-20260925.md`). Repo en github.com/fbolivar/www_crubol (público).
+deploy — EN PRODUCCIÓN. https://wwwcrubol.vercel.app (proyecto Vercel `www_crubol`,
+rama main). Variables de entorno cargadas. Verificado en vivo: home/páginas 200,
+headers de seguridad, asistente IA, diagnóstico, formulario y envío de PDF — todos OK.
+Repo público en github.com/fbolivar/www_crubol. Guía en `docs/DEPLOY.md`.
+
+## Pendientes post-lanzamiento
+
+- Dominio crubol.com.co: agregar en Vercel → Domains y apuntar DNS (aún no resuelve).
+- Firewall/WAF de Vercel para /api/* (condición C-03 de la auditoría).
 
 ## Seguridad (2026-09-25)
 
