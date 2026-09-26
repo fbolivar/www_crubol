@@ -17,7 +17,7 @@ import { enlaceWhatsApp } from "@/lib/whatsapp";
 import { indicativos } from "@/lib/indicativos";
 import { IconCerrar, IconWhatsApp } from "./ui/Icons";
 
-type Ctx = { abrir: () => void };
+type Ctx = { abrir: (contexto?: string) => void };
 const WhatsAppCtx = createContext<Ctx | null>(null);
 
 /** Hook para abrir el widget de WhatsApp desde cualquier componente. */
@@ -36,13 +36,15 @@ type Errores = Partial<Record<"nombre" | "correo" | "telefono", string>>;
 
 export function WhatsAppProvider({ children }: { children: ReactNode }) {
   const [abierto, setAbierto] = useState(false);
+  const [contexto, setContexto] = useState("");
   const [errores, setErrores] = useState<Errores>({});
   const reduce = useReducedMotion();
   const dialogRef = useRef<HTMLDivElement>(null);
   const previoRef = useRef<HTMLElement | null>(null);
 
-  const abrir = useCallback(() => {
+  const abrir = useCallback((ctx?: string) => {
     previoRef.current = document.activeElement as HTMLElement;
+    setContexto(ctx ?? "");
     setAbierto(true);
   }, []);
   const cerrar = useCallback(() => setAbierto(false), []);
@@ -119,6 +121,7 @@ export function WhatsAppProvider({ children }: { children: ReactNode }) {
       `Correo: ${v.correo}`,
       `WhatsApp: ${v.indicativo} ${v.telefono}`,
       v.area && `Área de interés: ${v.area}`,
+      contexto && contexto,
       "",
       "Escribo desde crubol.com.co y quiero que me contacten.",
     ]
@@ -139,7 +142,7 @@ export function WhatsAppProvider({ children }: { children: ReactNode }) {
       {/* Botón flotante de WhatsApp (a la izquierda del asistente) */}
       <button
         type="button"
-        onClick={abrir}
+        onClick={() => abrir()}
         aria-label="Contactar por WhatsApp"
         className="fixed bottom-5 right-[5.5rem] z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-6px_rgba(37,211,102,0.6)] transition-transform duration-300 ease-marca hover:-translate-y-1"
       >

@@ -96,7 +96,7 @@ export function Modalidades() {
               </ul>
               <button
                 type="button"
-                onClick={abrir}
+                onClick={() => abrir()}
                 className={`mt-6 rounded-xl py-2.5 text-sm font-medium transition-all hover:-translate-y-0.5 ${
                   m.destacado
                     ? "bg-menta text-abismo"

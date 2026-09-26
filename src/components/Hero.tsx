@@ -49,7 +49,7 @@ export function Hero() {
             </Reveal>
             <Reveal delay={0.15}>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button variante="menta" onClick={abrir}>
+                <Button variante="menta" onClick={() => abrir()}>
                   {hero.ctaPrimario}
                 </Button>
                 <ButtonLink variante="contorno-oscuro" href="#servicios">

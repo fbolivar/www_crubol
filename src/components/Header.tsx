@@ -70,7 +70,7 @@ export function Header() {
           >
             {nav.portal.label}
           </ButtonLink>
-          <Button variante="menta" onClick={abrir} className="hidden sm:inline-flex">
+          <Button variante="menta" onClick={() => abrir()} className="hidden sm:inline-flex">
             {nav.cta}
           </Button>
           <button

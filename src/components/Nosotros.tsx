@@ -85,12 +85,12 @@ export function Nosotros() {
           </Reveal>
           <Reveal delay={0.2}>
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button variante="teal" onClick={abrir}>
+              <Button variante="teal" onClick={() => abrir()}>
                 {nosotros.cta}
               </Button>
               <button
                 type="button"
-                onClick={abrir}
+                onClick={() => abrir()}
                 className="inline-flex items-center gap-2 text-sm font-medium text-teal transition-colors hover:text-tinta"
               >
                 <IconWhatsApp className="h-5 w-5" />

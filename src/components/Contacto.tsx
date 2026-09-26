@@ -57,7 +57,7 @@ export function Contacto() {
                 );
               if (d.tipo === "whatsapp")
                 return (
-                  <button key={d.label} type="button" onClick={abrir} className={clase}>
+                  <button key={d.label} type="button" onClick={() => abrir()} className={clase}>
                     {contenido}
                   </button>
                 );

@@ -167,7 +167,7 @@ export function Asistente() {
             {/* Acción: dejar datos */}
             <button
               type="button"
-              onClick={abrir}
+              onClick={() => abrir()}
               className="mx-4 mb-2 flex items-center justify-center gap-2 rounded-xl border border-menta/40 py-2 text-sm font-medium text-menta transition-colors hover:bg-menta/10"
             >
               <IconWhatsApp className="h-4 w-4" />

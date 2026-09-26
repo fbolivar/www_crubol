@@ -490,6 +490,21 @@ export const modalidades = {
 } as const;
 
 // --------------------------------------------------------------------------
+// Diagnóstico de dominio (CTA de captura)
+// --------------------------------------------------------------------------
+export const diagnostico = {
+  eyebrow: "Diagnóstico de dominio · Gratis",
+  tituloAntes: "¿Su infraestructura es",
+  tituloResaltado: "segura?",
+  parrafo:
+    "Ingrese su dominio y obtenga una evaluación completamente gratuita. Revisamos su exposición en internet y le decimos, con evidencia, qué conviene corregir primero.",
+  placeholder: "su-dominio.com",
+  cta: "Solicitar evaluación →",
+  nota: "Gratis y sin compromiso. Le respondemos los socios.",
+  errorDominio: "Ingrese un dominio válido (por ejemplo, empresa.com).",
+} as const;
+
+// --------------------------------------------------------------------------
 // Contacto
 // --------------------------------------------------------------------------
 export const contacto = {
