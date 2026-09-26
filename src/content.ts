@@ -141,6 +141,12 @@ export const hero = {
       { label: "Reporte mensual", valor: "Enviado" },
     ],
   },
+  chips: [
+    "Ciberseguridad activa",
+    "Automatización con IA",
+    "Infraestructura & Cloud",
+    "Cumplimiento ISO 27001",
+  ],
   tecnologias: [
     "FORTINET",
     "WAZUH SIEM",

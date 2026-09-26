@@ -1,8 +1,11 @@
-import { marquesinaGrande } from "@/content";
+"use client";
+
+import { useC } from "@/i18n";
 import { Marquee } from "./ui/Marquee";
 
 /** Marquesina grande: texto en contorno menta, sin relleno. */
 export function BigMarquee() {
+  const { marquesinaGrande } = useC();
   return (
     <section aria-hidden className="bg-abismo py-12">
       <Marquee velocidad="lento">

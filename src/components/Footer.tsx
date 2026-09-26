@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
-import { pie, empresa } from "@/content";
+import { useC } from "@/i18n";
 import { AbrirDiagnostico } from "./AbrirDiagnostico";
 
 export function Footer() {
+  const { pie, empresa } = useC();
   return (
     <footer className="border-t border-white/10 bg-abismo">
       <div className="mx-auto max-w-6xl px-4 py-14">
@@ -20,7 +23,7 @@ export function Footer() {
           </div>
 
           {/* Columnas de enlaces */}
-          {pie.columnas.map((col) => (
+          {pie.columnas.map((col, idx) => (
             <div key={col.titulo}>
               <h3 className="font-mono text-xs uppercase tracking-widest text-menta">
                 {col.titulo}
@@ -36,7 +39,8 @@ export function Footer() {
                     </a>
                   </li>
                 ))}
-                {col.titulo === "Empresa" && (
+                {/* La segunda columna (Empresa/Company) suma el enlace del diagnóstico. */}
+                {idx === 1 && (
                   <li>
                     <AbrirDiagnostico />
                   </li>

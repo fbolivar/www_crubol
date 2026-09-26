@@ -1,11 +1,14 @@
+"use client";
+
 import Image from "next/image";
-import { proceso } from "@/content";
+import { useC } from "@/i18n";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { Reveal, RevealGroup, RevealItem } from "./ui/Reveal";
 import { HexOutline, HexSolid } from "./ui/Decor";
 import { IconBrujula } from "./ui/Icons";
 
 export function Proceso() {
+  const { proceso } = useC();
   return (
     <section id="proceso" className="relative overflow-hidden bg-abismo py-20 sm:py-28">
       {/* Foto del data center de fondo, teñida y fundida con el abismo */}

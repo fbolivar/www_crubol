@@ -1,10 +1,11 @@
 "use client";
 
-import { diagnostico } from "@/content";
+import { useC } from "@/i18n";
 import { EVENTO_DIAGNOSTICO } from "./DiagnosticoPopup";
 
 /** Enlace del pie que abre la ventana de diagnóstico de dominio. */
 export function AbrirDiagnostico() {
+  const { diagnostico } = useC();
   return (
     <button
       type="button"

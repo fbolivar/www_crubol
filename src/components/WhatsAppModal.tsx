@@ -12,7 +12,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { whatsappForm } from "@/content";
+import { useC } from "@/i18n";
 import { enlaceWhatsApp } from "@/lib/whatsapp";
 import { indicativos } from "@/lib/indicativos";
 import { IconCerrar, IconWhatsApp } from "./ui/Icons";
@@ -35,6 +35,7 @@ const inputBase =
 type Errores = Partial<Record<"nombre" | "correo" | "telefono", string>>;
 
 export function WhatsAppProvider({ children }: { children: ReactNode }) {
+  const { whatsappForm } = useC();
   const [abierto, setAbierto] = useState(false);
   const [contexto, setContexto] = useState("");
   const [errores, setErrores] = useState<Errores>({});

@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { modalidades } from "@/content";
+import { useC } from "@/i18n";
 import { useWhatsApp } from "./WhatsAppModal";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { Reveal } from "./ui/Reveal";
 import { IconBrujula, IconCheck } from "./ui/Icons";
 
 export function Modalidades() {
+  const { modalidades } = useC();
   const { abrir } = useWhatsApp();
   const [pestana, setPestana] = useState<string>(modalidades.pestanas[0].id);
   const visibles = modalidades.items.filter((m) => m.tipo === pestana);

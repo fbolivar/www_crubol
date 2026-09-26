@@ -1,6 +1,6 @@
 "use client";
 
-import { nosotros } from "@/content";
+import { useC } from "@/i18n";
 import { useWhatsApp } from "./WhatsAppModal";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { Reveal } from "./ui/Reveal";
@@ -10,6 +10,7 @@ import { HexOutline, DotGrid } from "./ui/Decor";
 import { IconEscudo, IconCheck, IconWhatsApp } from "./ui/Icons";
 
 export function Nosotros() {
+  const { nosotros } = useC();
   const { abrir } = useWhatsApp();
   return (
     <section id="nosotros" className="relative overflow-hidden bg-papel py-20 sm:py-28">

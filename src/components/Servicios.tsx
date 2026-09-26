@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { servicios } from "@/content";
+import { useC } from "@/i18n";
 import { useWhatsApp } from "./WhatsAppModal";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { HexIcon } from "./ui/HexIcon";
@@ -27,9 +27,10 @@ const iconos: ReactNode[] = [
   <IconDocumento key="3" className="h-6 w-6" />,
 ];
 
-type Servicio = (typeof servicios.items)[number];
+type Servicio = ReturnType<typeof useC>["servicios"]["items"][number];
 
 export function Servicios() {
+  const { servicios } = useC();
   const { abrir } = useWhatsApp();
   const [activo, setActivo] = useState<number | null>(null);
 
@@ -117,6 +118,7 @@ function ServicioModal({
   onCerrar: () => void;
   onSolicitar: () => void;
 }) {
+  const { servicios } = useC();
   const reduce = useReducedMotion();
   const dialogRef = useRef<HTMLDivElement>(null);
   const previoRef = useRef<HTMLElement | null>(null);

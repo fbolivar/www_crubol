@@ -1,6 +1,6 @@
 "use client";
 
-import { hero } from "@/content";
+import { useC } from "@/i18n";
 import { useWhatsApp } from "./WhatsAppModal";
 import { HeroArt } from "./HeroArt";
 import { TechMarquee } from "./TechMarquee";
@@ -12,6 +12,7 @@ import { ShapeDivider } from "./ui/ShapeDivider";
 import { IconRayo } from "./ui/Icons";
 
 export function Hero() {
+  const { hero } = useC();
   const { abrir } = useWhatsApp();
   return (
     <section id="top" className="relative overflow-hidden bg-abismo pt-28 pb-0 sm:pt-32">

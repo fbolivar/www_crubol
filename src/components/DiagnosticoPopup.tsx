@@ -8,7 +8,7 @@ import {
   type FormEvent,
 } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { diagnostico } from "@/content";
+import { useC } from "@/i18n";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { Glow, HexSolid } from "./ui/Decor";
 import { IconEscudo, IconCerrar } from "./ui/Icons";
@@ -28,6 +28,7 @@ function normalizarDominio(entrada: string): string | null {
 }
 
 export function DiagnosticoPopup() {
+  const { diagnostico } = useC();
   const reduce = useReducedMotion();
   const [abierto, setAbierto] = useState(false);
   const [valor, setValor] = useState("");

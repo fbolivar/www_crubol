@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { asistente } from "@/content";
+import { useC } from "@/i18n";
 import { useWhatsApp } from "./WhatsAppModal";
 import { IconCerrar, IconWhatsApp, IconFlecha } from "./ui/Icons";
 
 type Mensaje = { role: "user" | "assistant"; content: string };
 
 export function Asistente() {
+  const { asistente } = useC();
   const { abrir } = useWhatsApp();
   const reduce = useReducedMotion();
   const [abierto, setAbierto] = useState(false);

@@ -1,10 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { contacto } from "@/content";
+import { useC } from "@/i18n";
 import { IconFlecha, IconCheck } from "./ui/Icons";
-
-const { form } = contacto;
 
 type Errores = Partial<Record<"nombre" | "empresa" | "correo" | "necesidad", string>>;
 type Estado = "idle" | "enviando" | "ok" | "error";
@@ -18,6 +16,8 @@ const inputBase =
  * Route Handler /api/contacto, que los remite por correo a info@crubol.com.
  */
 export function ContactForm() {
+  const { contacto } = useC();
+  const { form } = contacto;
   const [errores, setErrores] = useState<Errores>({});
   const [estado, setEstado] = useState<Estado>("idle");
   const [errorMsg, setErrorMsg] = useState("");

@@ -1,6 +1,6 @@
 "use client";
 
-import { contacto, empresa } from "@/content";
+import { useC } from "@/i18n";
 import { useWhatsApp } from "./WhatsAppModal";
 import { ContactForm } from "./ContactForm";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
@@ -15,6 +15,7 @@ const iconos = {
 };
 
 export function Contacto() {
+  const { contacto, empresa } = useC();
   const { abrir } = useWhatsApp();
   return (
     <section id="contacto" className="relative overflow-hidden bg-abismo py-20 sm:py-28">

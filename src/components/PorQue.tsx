@@ -1,10 +1,13 @@
-import { porque } from "@/content";
+"use client";
+
+import { useC } from "@/i18n";
 import { SectionEyebrow } from "./ui/SectionEyebrow";
 import { ProgressBar } from "./ui/ProgressBar";
 import { Reveal, RevealGroup, RevealItem } from "./ui/Reveal";
 import { IconEscudo } from "./ui/Icons";
 
 export function PorQue() {
+  const { porque } = useC();
   return (
     <section id="por-que" className="bg-abismo py-20 sm:py-28">
       <div className="mx-auto grid max-w-6xl items-start gap-12 px-4 lg:grid-cols-2 lg:gap-16">

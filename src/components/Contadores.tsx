@@ -1,8 +1,11 @@
-import { contadores } from "@/content";
+"use client";
+
+import { useC } from "@/i18n";
 import { Counter } from "./ui/Counter";
 import { RevealGroup, RevealItem } from "./ui/Reveal";
 
 export function Contadores() {
+  const { contadores } = useC();
   return (
     <section className="bg-abismo py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4">

@@ -1,3 +1,4 @@
+import { IdiomaProvider } from "@/i18n";
 import { WhatsAppProvider } from "@/components/WhatsAppModal";
 import { Asistente } from "@/components/Asistente";
 import { Header } from "@/components/Header";
@@ -15,8 +16,9 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <WhatsAppProvider>
-      <Header />
+    <IdiomaProvider>
+      <WhatsAppProvider>
+        <Header />
       <main>
         <Hero />
         <Nosotros />
@@ -29,8 +31,9 @@ export default function Home() {
         <Contacto />
       </main>
       <Footer />
-      <Asistente />
-      <DiagnosticoPopup />
-    </WhatsAppProvider>
+        <Asistente />
+        <DiagnosticoPopup />
+      </WhatsAppProvider>
+    </IdiomaProvider>
   );
 }

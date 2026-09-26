@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { nav } from "@/content";
+import { useC } from "@/i18n";
 import { useWhatsApp } from "./WhatsAppModal";
+import { LanguageToggle } from "./LanguageToggle";
 import { Button, ButtonLink } from "./ui/Button";
 import { IconMenu, IconCerrar } from "./ui/Icons";
 
 export function Header() {
+  const { nav } = useC();
   const { abrir } = useWhatsApp();
   const [compacto, setCompacto] = useState(false);
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -61,6 +63,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <LanguageToggle />
           {/* Los contenedores controlan la visibilidad (el botón base es inline-flex). */}
           <span className="hidden md:inline-flex">
             <ButtonLink
@@ -143,6 +146,9 @@ export function Header() {
             >
               {nav.portal.label}
             </ButtonLink>
+            <div className="mt-6">
+              <LanguageToggle />
+            </div>
           </nav>
         </div>
       )}
