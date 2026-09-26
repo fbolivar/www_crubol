@@ -2,9 +2,12 @@ import type { NextConfig } from "next";
 
 // CSP base. Se usa 'unsafe-inline' en script/style por la hidratación de Next y
 // los estilos en línea de Framer Motion; endurecer a nonce es una mejora futura.
+// En desarrollo, React/Turbopack requieren 'unsafe-eval'; en producción NO se incluye.
+const esDev = process.env.NODE_ENV !== "production";
+const scriptSrc = `script-src 'self' 'unsafe-inline'${esDev ? " 'unsafe-eval'" : ""}`;
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  scriptSrc,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self'",
