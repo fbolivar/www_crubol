@@ -83,6 +83,18 @@ frontend — COMPLETA. Diseño aprobado por Fernando. Sitio funcional de punta a
 - PENDIENTE producción: cargar ANTHROPIC_API_KEY en Vercel y agregar rate limiting
   a nivel de plataforma (endpoint público).
 
+## Diagnóstico de dominio (ADR 0003)
+- Ventana emergente (una vez por sesión + enlace "Diagnóstico Infraestructura" en el
+  pie) donde se ingresa un dominio; abre `/diagnostico?d=<dominio>` en pestaña nueva.
+- Análisis PARCIAL y seguro en `POST /api/diagnostico` (`src/lib/diagnostico.ts`):
+  cabeceras de seguridad, certificado SSL/TLS y SEO on-page, con puntajes.
+- NO escanea puertos ni vulnerabilidades (queda para el informe manual con
+  autorización). Protección SSRF: rechaza IPs y rangos privados; timeouts.
+- La página de resultados muestra progreso animado, el informe y un formulario que
+  manda el lead + puntajes a info@crubol.com (vía /api/contacto). Verificado con
+  dominios reales; SSRF probado (IP/localhost rechazados).
+- PENDIENTE producción: rate limiting en Vercel para /api/diagnostico y /api/asistente.
+
 ## Widget de WhatsApp y política
 - El modal de WhatsApp es ahora un formulario tipo chat (nombre, correo, número,
   área) que al enviar abre wa.me con un número elegido al azar. Botón flotante global.

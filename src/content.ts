@@ -505,6 +505,41 @@ export const diagnostico = {
   linkFooter: "Diagnóstico Infraestructura",
 } as const;
 
+// Página de resultados del diagnóstico (pestaña nueva).
+export const diagnosticoResultado = {
+  eyebrow: "Diagnóstico de dominio · Gratis",
+  cargando: {
+    mensajes: [
+      "Conectando con el dominio…",
+      "Revisando cabeceras de seguridad…",
+      "Verificando el certificado SSL/TLS…",
+      "Analizando SEO y metadatos…",
+      "Calculando su puntaje…",
+    ],
+    nota: "Analizando seguridad, SSL y SEO. No cierre esta ventana.",
+  },
+  labelSeguridad: "Seguridad",
+  labelWeb: "Web / SEO",
+  de100: "de 100",
+  resultadoDe: "Resultado de",
+  parcialNota:
+    "Este es un análisis parcial y automático. El escaneo profundo de puertos, vulnerabilidades y superficie de exposición lo realizan los socios de forma manual y con su autorización.",
+  form: {
+    titulo: "Desbloquee su informe completo",
+    texto:
+      "Incluye el escaneo profundo (puertos, vulnerabilidades y exposición), la auditoría técnica y las recomendaciones priorizadas — déjenos su correo y un socio lo ayuda a priorizar.",
+    nombre: "Su nombre",
+    correo: "Su correo",
+    politicaAntes: "Acepto la",
+    politicaLink: "política de tratamiento de datos",
+    enviar: "Quiero el informe completo →",
+    gracias: "¡Recibido! Un socio de Crubol lo contactará con el informe completo.",
+    error: "No pudimos registrar su solicitud. Intente de nuevo.",
+  },
+  errorTitulo: "No pudimos analizar el dominio",
+  reintentar: "Volver a intentar",
+} as const;
+
 // --------------------------------------------------------------------------
 // Contacto
 // --------------------------------------------------------------------------
