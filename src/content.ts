@@ -104,6 +104,7 @@ export const nav = {
     { label: "Contacto", href: "#contacto" },
   ],
   cta: "Hablemos →",
+  portal: { label: "Portal cliente", href: "https://crubolos.crubol.com" },
 } as const;
 
 // --------------------------------------------------------------------------
