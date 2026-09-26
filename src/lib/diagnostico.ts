@@ -149,7 +149,7 @@ const PROVEEDORES: [RegExp, string][] = [
   [/pphosted|proofpoint/i, "Proofpoint"],
   [/mailgun|mandrill|sendgrid|amazonses/i, "Envío transaccional"],
 ];
-const SELECTORES = ["google", "default", "selector1", "selector2", "k1", "k2", "dkim", "mail", "s1", "s2", "mxvault", "zoho"];
+const SELECTORES = ["google", "default", "selector1", "selector2", "k1", "k2", "dkim", "mail", "s1", "s2", "mxvault", "zoho", "titan1", "titan2", "titan", "protonmail", "sm"];
 const DNSBL = ["zen.spamhaus.org", "b.barracudacentral.org"];
 
 async function enListaNegra(ip: string): Promise<boolean | null> {
