@@ -55,21 +55,22 @@ export function generarInformePDF(
     doc.fillColor(TEAL).fontSize(24).font("Helvetica-Bold").text(`${reporte.scores.correo}/100`, x0 + ancho / 2 + 22, yP + 10);
     doc.fillColor(GRIS).fontSize(9).font("Helvetica").text("Correo / DNS", x0 + ancho / 2 + 22, yP + 38);
     doc.y = yP + 66;
-    doc.fillColor(TINTA).fontSize(10).font("Helvetica-Oblique").text(reporte.resumen, x0, doc.y);
+    doc.fillColor(TINTA).fontSize(10).font("Helvetica-Oblique").text(String(reporte.resumen ?? "").slice(0, 200), x0, doc.y);
 
-    // Grupos y checks
-    for (const g of reporte.grupos) {
+    // Grupos y checks. Se acotan tamaños por si el reporte llega manipulado.
+    const s = (v: unknown, n = 300) => String(v ?? "").slice(0, n);
+    for (const g of (reporte.grupos || []).slice(0, 10)) {
       doc.moveDown(1);
       if (doc.y > doc.page.height - 140) doc.addPage();
-      doc.fillColor(TEAL).fontSize(13).font("Helvetica-Bold").text(g.titulo, x0, doc.y);
+      doc.fillColor(TEAL).fontSize(13).font("Helvetica-Bold").text(s(g.titulo, 120), x0, doc.y);
       doc.moveDown(0.4);
-      for (const c of g.checks) {
+      for (const c of (g.checks || []).slice(0, 20)) {
         if (doc.y > doc.page.height - 90) doc.addPage();
         const y = doc.y;
         doc.roundedRect(x0, y, 58, 16, 4).fill(colorEstado(c.estado));
         doc.fillColor("#FFFFFF").fontSize(8).font("Helvetica-Bold").text(textoEstado(c.estado), x0, y + 4, { width: 58, align: "center" });
-        doc.fillColor(TINTA).fontSize(10).font("Helvetica-Bold").text(c.titulo, x0 + 68, y, { width: ancho - 68 });
-        doc.fillColor(GRIS).fontSize(9).font("Helvetica").text(`${c.valor} — ${c.consejo}`, x0 + 68, doc.y, { width: ancho - 68 });
+        doc.fillColor(TINTA).fontSize(10).font("Helvetica-Bold").text(s(c.titulo, 120), x0 + 68, y, { width: ancho - 68 });
+        doc.fillColor(GRIS).fontSize(9).font("Helvetica").text(`${s(c.valor, 200)} — ${s(c.consejo)}`, x0 + 68, doc.y, { width: ancho - 68 });
         doc.moveDown(0.6);
       }
     }

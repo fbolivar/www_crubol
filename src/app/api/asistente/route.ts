@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { SYSTEM_PROMPT } from "@/lib/asistente-kb";
+import { permitido, respuesta429 } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -22,6 +23,8 @@ function esTurnoValido(x: unknown): x is Turno {
 }
 
 export async function POST(req: Request) {
+  if (!permitido(req, "asistente", 20, 300000)) return respuesta429();
+
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return Response.json(

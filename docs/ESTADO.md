@@ -10,7 +10,18 @@ Tailwind 4 + Framer Motion. Sin Supabase, sin Stripe, sin base de datos (ver ADR
 
 ## Fase actual
 
-frontend — COMPLETA. Diseño aprobado por Fernando. Sitio funcional de punta a punta.
+seguridad — auditoría hecha. Veredicto APTO CON CONDICIONES
+(`docs/seguridad/AUD-20260925.md`). Repo en github.com/fbolivar/www_crubol (público).
+
+## Seguridad (2026-09-25)
+
+- Auditoría adversarial. Corregidos: SSRF en análisis TLS (guard previo), headers de
+  seguridad (CSP/HSTS/X-Frame-Options/nosniff/Referrer/Permissions), rate limiting en
+  los 4 endpoints (`src/lib/rate-limit.ts`), X-Powered-By oculto, acotado de campos
+  del reporte en el PDF. Sin secretos en repo; `npm audit` limpio.
+- Condiciones para deploy: cargar env en Vercel (ANTHROPIC_API_KEY, SMTP_*), confirmar
+  repo público, habilitar rate limiting/WAF de plataforma para /api/*.
+- No aplica RLS/Auth/Stripe (ADR 0001).
 
 ## Fases completadas
 

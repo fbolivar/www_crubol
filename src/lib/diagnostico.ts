@@ -172,6 +172,10 @@ async function enListaNegra(ip: string): Promise<boolean | null> {
 // Análisis principal
 // --------------------------------------------------------------------------
 export async function analizarDominio(dominio: string): Promise<Reporte> {
+  // Guarda previa contra SSRF: valida que el dominio no resuelva a IP privada
+  // ANTES de cualquier conexión (fetch, TLS o DNSBL).
+  await guardarHost(dominio);
+
   const [principal, ip, tlsInfo, mx, spfTxts, dmarcTxts, caa] = await Promise.all([
     fetchSeguro(`https://${dominio}`),
     ipDe(dominio),

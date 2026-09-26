@@ -1,10 +1,13 @@
 import { analizarDominio, normalizarDominio } from "@/lib/diagnostico";
+import { permitido, respuesta429 } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
+  if (!permitido(req, "diagnostico", 10, 300000)) return respuesta429();
+
   let body: unknown;
   try {
     body = await req.json();

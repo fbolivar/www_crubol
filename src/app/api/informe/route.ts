@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import { generarInformePDF } from "@/lib/informe-pdf";
 import { normalizarDominio, type Reporte } from "@/lib/diagnostico";
+import { permitido, respuesta429 } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -23,6 +24,8 @@ function reporteValido(r: unknown): r is Reporte {
 }
 
 export async function POST(req: Request) {
+  if (!permitido(req, "informe", 5, 600000)) return respuesta429();
+
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SMTP_FROM, SMTP_TO } =
     process.env;
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) {
