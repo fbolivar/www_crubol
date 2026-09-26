@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { pie, empresa } from "@/content";
+import { AbrirDiagnostico } from "./AbrirDiagnostico";
 
 export function Footer() {
   return (
@@ -35,6 +36,11 @@ export function Footer() {
                     </a>
                   </li>
                 ))}
+                {col.titulo === "Empresa" && (
+                  <li>
+                    <AbrirDiagnostico />
+                  </li>
+                )}
               </ul>
             </div>
           ))}

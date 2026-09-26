@@ -9,7 +9,7 @@ import { PorQue } from "@/components/PorQue";
 import { BigMarquee } from "@/components/BigMarquee";
 import { Proceso } from "@/components/Proceso";
 import { Modalidades } from "@/components/Modalidades";
-import { DiagnosticoDominio } from "@/components/DiagnosticoDominio";
+import { DiagnosticoPopup } from "@/components/DiagnosticoPopup";
 import { Contacto } from "@/components/Contacto";
 import { Footer } from "@/components/Footer";
 
@@ -26,11 +26,11 @@ export default function Home() {
         <BigMarquee />
         <Proceso />
         <Modalidades />
-        <DiagnosticoDominio />
         <Contacto />
       </main>
       <Footer />
       <Asistente />
+      <DiagnosticoPopup />
     </WhatsAppProvider>
   );
 }

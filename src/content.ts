@@ -502,6 +502,7 @@ export const diagnostico = {
   cta: "Solicitar evaluación →",
   nota: "Gratis y sin compromiso. Le respondemos los socios.",
   errorDominio: "Ingrese un dominio válido (por ejemplo, empresa.com).",
+  linkFooter: "Diagnóstico Infraestructura",
 } as const;
 
 // --------------------------------------------------------------------------
