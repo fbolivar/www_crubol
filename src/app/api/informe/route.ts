@@ -76,32 +76,36 @@ export async function POST(req: Request) {
   };
   const resumen = `Dominio: ${reporte.dominio}\nSeguridad web: ${reporte.scores.seguridad}/100\nCorreo/DNS: ${reporte.scores.correo}/100`;
 
-  try {
-    // Aviso a Crubol con el lead + PDF.
-    await transport.sendMail({
+  // Se envían las dos copias de forma independiente: la falla de una no afecta
+  // a la otra. La copia al visitante puede caer en spam si el SPF/DKIM/DMARC del
+  // dominio remitente no están bien configurados.
+  const [crubol, visitante] = await Promise.allSettled([
+    transport.sendMail({
       from: SMTP_FROM || SMTP_USER,
       to: SMTP_TO || SMTP_USER,
       replyTo: `${nombre} <${correo}>`,
       subject: `Diagnóstico de dominio — ${reporte.dominio}`,
       text: `Nuevo lead de diagnóstico.\n\nNombre: ${nombre}\nCorreo: ${correo}\n${resumen}\n\nAdjunto el reporte parcial en PDF.`,
       attachments: [adjunto],
-    });
-
-    // Copia al visitante con su reporte parcial.
-    await transport.sendMail({
+    }),
+    transport.sendMail({
       from: SMTP_FROM || SMTP_USER,
       to: correo,
       subject: `Su diagnóstico de ${reporte.dominio} — Crubol`,
       text: `Hola ${nombre},\n\nAdjuntamos el reporte parcial del diagnóstico de ${reporte.dominio}.\n${resumen}\n\nUn socio de Crubol lo contactará para el informe completo (escaneo profundo de puertos, vulnerabilidades y recomendaciones priorizadas).\n\nCrubol Technology S.A.S. · info@crubol.com`,
       attachments: [adjunto],
-    });
+    }),
+  ]);
 
+  if (crubol.status === "rejected") console.error("Aviso a Crubol falló:", crubol.reason);
+  if (visitante.status === "rejected") console.error("Copia al visitante falló:", visitante.reason);
+
+  // Éxito si al menos una copia salió (normalmente ambas).
+  if (crubol.status === "fulfilled" || visitante.status === "fulfilled") {
     return Response.json({ ok: true });
-  } catch (error) {
-    console.error("Error enviando informe:", error);
-    return Response.json(
-      { error: "No pudimos enviar el reporte. Intente de nuevo o escríbanos a info@crubol.com." },
-      { status: 502 },
-    );
   }
+  return Response.json(
+    { error: "No pudimos enviar el reporte. Intente de nuevo o escríbanos a info@crubol.com." },
+    { status: 502 },
+  );
 }
