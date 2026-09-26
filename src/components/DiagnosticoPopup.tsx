@@ -15,8 +15,10 @@ import { IconEscudo, IconCerrar } from "./ui/Icons";
 
 // Evento global para abrir el popup desde otros componentes (p. ej. el pie).
 export const EVENTO_DIAGNOSTICO = "crubol:diagnostico";
-const CLAVE_SESION = "crubol_diag_mostrado";
-const DEMORA_MS = 30000; // aparece esporádicamente tras ~30s, una vez por sesión
+const CLAVE_TS = "crubol_diag_ts"; // marca de tiempo de la última aparición
+const DEMORA_MS = 12000; // aparece ~12s después de entrar
+const ENFRIAMIENTO_MS = 30 * 60 * 1000; // no más de una vez cada 30 min
+const PROBABILIDAD = 0.6; // esporádico: ~60% de las visitas elegibles
 
 function normalizarDominio(entrada: string): string | null {
   let v = entrada.trim().toLowerCase();
@@ -39,25 +41,29 @@ export function DiagnosticoPopup() {
   }, []);
   const cerrar = useCallback(() => setAbierto(false), []);
 
-  // Apertura esporádica (una vez por sesión) + apertura por evento (pie).
+  // Apertura esporádica: en una parte de las visitas, tras una demora, con
+  // enfriamiento (no repetir muy seguido). Además, apertura por evento (pie).
   useEffect(() => {
-    let yaMostrado = false;
+    let ultima = 0;
     try {
-      yaMostrado = sessionStorage.getItem(CLAVE_SESION) === "1";
+      ultima = Number(localStorage.getItem(CLAVE_TS) || "0");
     } catch {
-      /* sessionStorage puede no estar disponible */
+      /* localStorage puede no estar disponible */
     }
-    const t = yaMostrado
-      ? undefined
-      : setTimeout(() => {
-          try {
-            sessionStorage.setItem(CLAVE_SESION, "1");
-          } catch {
-            /* ignorar */
-          }
-          abrir();
-        }, DEMORA_MS);
+    const elegible = Date.now() - ultima > ENFRIAMIENTO_MS;
+    let t: ReturnType<typeof setTimeout> | undefined;
+    if (elegible && Math.random() < PROBABILIDAD) {
+      t = setTimeout(() => {
+        try {
+          localStorage.setItem(CLAVE_TS, String(Date.now()));
+        } catch {
+          /* ignorar */
+        }
+        abrir();
+      }, DEMORA_MS);
+    }
 
+    // El enlace del pie fuerza la apertura, sin enfriamiento.
     const onEvento = () => abrir();
     window.addEventListener(EVENTO_DIAGNOSTICO, onEvento);
     return () => {
