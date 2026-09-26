@@ -12,14 +12,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        abismo: "#04161B",
-        profundo: "#0A2630",
+        abismo: "#061E24",
+        profundo: "#0A2E36",
         "profundo-2": "#0C2E39",
         teal: "#0B7285",
         cian: "#15AABF",
         menta: "#63E6BE",
-        texto: "#E8F4F6",
-        niebla: "#93B7C0",
+        texto: "#E6F2F4",
+        niebla: "#9FC2C9",
         papel: "#FBFDFD",
         "niebla-clara": "#EEF7F8",
         tinta: "#16323A",

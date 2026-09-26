@@ -12,7 +12,7 @@ import { ShapeDivider } from "./ui/ShapeDivider";
 import {
   IconServidor,
   IconEscudo,
-  IconChip,
+  IconRedNeuronal,
   IconDocumento,
   IconBrujula,
   IconFlecha,
@@ -23,7 +23,7 @@ import {
 const iconos: ReactNode[] = [
   <IconServidor key="0" className="h-6 w-6" />,
   <IconEscudo key="1" className="h-6 w-6" />,
-  <IconChip key="2" className="h-6 w-6" />,
+  <IconRedNeuronal key="2" className="h-6 w-6" />,
   <IconDocumento key="3" className="h-6 w-6" />,
 ];
 

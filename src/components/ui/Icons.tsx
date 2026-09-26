@@ -36,6 +36,18 @@ export const IconChip = (p: P) => (
   </svg>
 );
 
+// Red neuronal (ícono de IA según el manual de marca).
+export const IconRedNeuronal = (p: P) => (
+  <svg {...base} {...p}>
+    <circle cx="5" cy="6" r="1.6" />
+    <circle cx="5" cy="18" r="1.6" />
+    <circle cx="12" cy="12" r="1.9" />
+    <circle cx="19" cy="7" r="1.6" />
+    <circle cx="19" cy="17" r="1.6" />
+    <path d="M6.5 6.8l4 4M6.4 17.2l4.1-4M13.6 11l4-3.4M13.7 13l3.9 3.2" />
+  </svg>
+);
+
 export const IconDocumento = (p: P) => (
   <svg {...base} {...p}>
     <path d="M6 3h8l4 4v14H6z" />

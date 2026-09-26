@@ -23,7 +23,7 @@ export function Proceso() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, rgba(11,114,133,0.45), rgba(4,22,27,0.15) 55%, rgba(21,170,191,0.30))",
+              "linear-gradient(135deg, rgba(11,114,133,0.45), rgba(6, 30, 36,0.15) 55%, rgba(21,170,191,0.30))",
             mixBlendMode: "multiply",
           }}
         />
@@ -32,7 +32,7 @@ export function Proceso() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, #04161B 0%, rgba(4,22,27,0.35) 28%, rgba(4,22,27,0.45) 62%, #04161B 100%)",
+              "linear-gradient(to bottom, #061E24 0%, rgba(6, 30, 36,0.35) 28%, rgba(6, 30, 36,0.45) 62%, #061E24 100%)",
           }}
         />
       </div>

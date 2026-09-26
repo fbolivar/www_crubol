@@ -20,9 +20,12 @@ export const plexSans = localFont({
   ],
 });
 
-// IBM Plex Mono 500 -> etiquetas, datos, pies, subtítulos de sección
+// IBM Plex Mono 400/500 -> etiquetas (400), datos (500), pies, subtítulos
 export const plexMono = localFont({
   variable: "--font-mono",
   display: "swap",
-  src: [{ path: "../../public/fonts/IBMPlexMono-500.woff2", weight: "500", style: "normal" }],
+  src: [
+    { path: "../../public/fonts/IBMPlexMono-400.woff2", weight: "400", style: "normal" },
+    { path: "../../public/fonts/IBMPlexMono-500.woff2", weight: "500", style: "normal" },
+  ],
 });

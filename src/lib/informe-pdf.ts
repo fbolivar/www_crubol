@@ -3,7 +3,7 @@ import { diagnosticoResultado } from "@/content";
 import type { Reporte } from "@/lib/diagnostico";
 
 // Paleta de marca
-const ABISMO = "#04161B";
+const ABISMO = "#061E24";
 const TEAL = "#0B7285";
 const CIAN = "#15AABF";
 const MENTA = "#2Fb389"; // menta legible sobre blanco (el #63E6BE no contrasta)
@@ -33,7 +33,7 @@ export function generarInformePDF(
 
     // Encabezado
     doc.rect(0, 0, doc.page.width, 90).fill(ABISMO);
-    doc.fillColor("#E8F4F6").fontSize(20).font("Helvetica-Bold").text("Crubol Technology", x0, 30);
+    doc.fillColor("#E6F2F4").fontSize(20).font("Helvetica-Bold").text("Crubol Technology", x0, 30);
     doc.fillColor(CIAN).fontSize(10).font("Helvetica").text("DIAGNÓSTICO DE DOMINIO · REPORTE PARCIAL", x0, 56);
 
     doc.moveDown(3);

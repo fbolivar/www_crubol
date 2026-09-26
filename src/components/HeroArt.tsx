@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { IconEscudo, IconChip, IconServidor, IconDocumento } from "./ui/Icons";
+import { IconEscudo, IconRedNeuronal, IconServidor, IconDocumento } from "./ui/Icons";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const HEX = "M200 40 L338 120 L338 280 L200 360 L62 280 L62 120 Z";
@@ -20,7 +20,7 @@ const NODOS = [
 // Chips flotantes con los frentes de servicio.
 const CHIPS = [
   { icon: <IconEscudo className="h-4 w-4" />, label: "Ciberseguridad activa", color: "text-menta", pos: "left-[48%] top-[4%]", delay: 0 },
-  { icon: <IconChip className="h-4 w-4" />, label: "Automatización con IA", color: "text-cian", pos: "right-[1%] top-[38%]", delay: 0.4 },
+  { icon: <IconRedNeuronal className="h-4 w-4" />, label: "Automatización con IA", color: "text-cian", pos: "right-[1%] top-[38%]", delay: 0.4 },
   { icon: <IconServidor className="h-4 w-4" />, label: "Infraestructura & Cloud", color: "text-menta", pos: "left-[1%] top-[54%]", delay: 0.8 },
   { icon: <IconDocumento className="h-4 w-4" />, label: "Cumplimiento ISO 27001", color: "text-cian", pos: "left-[26%] bottom-[3%]", delay: 1.2 },
 ];

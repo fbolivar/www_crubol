@@ -95,8 +95,8 @@ export async function POST(req: Request) {
 
   const htmlVisitante = `
   <div style="font-family:Arial,Helvetica,sans-serif;color:#16323A;max-width:560px;margin:0 auto">
-    <div style="background:#04161B;padding:20px 24px;border-radius:12px 12px 0 0">
-      <span style="color:#E8F4F6;font-size:20px;font-weight:700">Crubol Technology</span>
+    <div style="background:#061E24;padding:20px 24px;border-radius:12px 12px 0 0">
+      <span style="color:#E6F2F4;font-size:20px;font-weight:700">Crubol Technology</span>
       <span style="color:#15AABF;font-size:12px;display:block;margin-top:4px">DIAGNÓSTICO DE DOMINIO · REPORTE PARCIAL</span>
     </div>
     <div style="border:1px solid #DDE9EC;border-top:none;border-radius:0 0 12px 12px;padding:24px">
@@ -104,7 +104,7 @@ export async function POST(req: Request) {
       <p style="margin:0 0 4px;color:#48626B">Adjuntamos el reporte parcial del diagnóstico de <strong>${esc(reporte.dominio)}</strong>.</p>
       ${tarjetas}
       <p style="margin:0 0 16px;color:#48626B">Un socio de Crubol lo contactará para el <strong>informe completo</strong>: escaneo profundo de puertos, vulnerabilidades y recomendaciones priorizadas.</p>
-      <p style="margin:0;font-size:12px;color:#93B7C0">El detalle completo está en el PDF adjunto. Crubol Technology S.A.S. · info@crubol.com · crubol.com.co</p>
+      <p style="margin:0;font-size:12px;color:#9FC2C9">El detalle completo está en el PDF adjunto. Crubol Technology S.A.S. · info@crubol.com · crubol.com.co</p>
     </div>
   </div>`;
 

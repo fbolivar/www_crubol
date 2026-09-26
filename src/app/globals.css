@@ -8,14 +8,14 @@
    ========================================================================== */
 @theme {
   /* Territorio oscuro */
-  --color-abismo: #04161b;
-  --color-profundo: #0a2630;
+  --color-abismo: #061E24;
+  --color-profundo: #0A2E36;
   --color-profundo-2: #0c2e39;
   --color-teal: #0b7285;
   --color-cian: #15aabf;
   --color-menta: #63e6be;
-  --color-texto: #e8f4f6;
-  --color-niebla: #93b7c0;
+  --color-texto: #E6F2F4;
+  --color-niebla: #9FC2C9;
 
   /* Territorio claro */
   --color-papel: #fbfdfd;
@@ -133,7 +133,7 @@
     background: linear-gradient(
       135deg,
       rgba(11, 114, 133, 0.55),
-      rgba(4, 22, 27, 0.35) 55%,
+      rgba(6, 30, 36, 0.35) 55%,
       rgba(99, 230, 190, 0.25)
     );
     mix-blend-mode: screen;

@@ -90,7 +90,7 @@ export async function POST(req: Request) {
       <p style="margin:16px 0 4px;color:#48626B">Mensaje:</p>
       <p style="margin:0;white-space:pre-wrap">${escapar(datos.mensaje) || "(sin mensaje)"}</p>
       <hr style="border:none;border-top:1px solid #DDE9EC;margin:20px 0"/>
-      <p style="color:#93B7C0;font-size:12px">Enviado desde el formulario de crubol.com.co</p>
+      <p style="color:#9FC2C9;font-size:12px">Enviado desde el formulario de crubol.com.co</p>
     </div>`;
 
   try {

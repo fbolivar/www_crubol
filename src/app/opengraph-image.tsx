@@ -16,7 +16,7 @@ export default function OgImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#04161B",
+          background: "#061E24",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
@@ -29,7 +29,7 @@ export default function OgImage() {
               strokeWidth={6}
             />
           </svg>
-          <span style={{ color: "#E8F4F6", fontSize: 40, fontWeight: 700 }}>
+          <span style={{ color: "#E6F2F4", fontSize: 40, fontWeight: 700 }}>
             Crubol Technology
           </span>
         </div>
@@ -37,7 +37,7 @@ export default function OgImage() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <span
             style={{
-              color: "#93B7C0",
+              color: "#9FC2C9",
               fontSize: 22,
               letterSpacing: 6,
               textTransform: "uppercase",
@@ -47,7 +47,7 @@ export default function OgImage() {
           </span>
           <span
             style={{
-              color: "#E8F4F6",
+              color: "#E6F2F4",
               fontSize: 60,
               fontWeight: 700,
               lineHeight: 1.15,
