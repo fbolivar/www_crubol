@@ -179,7 +179,7 @@ export async function analizarDominio(dominio: string): Promise<Reporte> {
     dnsp.resolveMx(dominio).catch(() => [] as { exchange: string; priority: number }[]),
     txt(dominio),
     txt(`_dmarc.${dominio}`),
-    dnsp.resolveCaa(dominio).catch(() => [] as { issue?: string }[]),
+    dnsp.resolveCaa(dominio).catch(() => []),
   ]);
   const { res, urlFinal } = principal;
   const h = res.headers;
@@ -228,7 +228,8 @@ export async function analizarDominio(dominio: string): Promise<Reporte> {
 
   // ---- Certificado SSL/TLS ----
   const protoOk = tlsInfo.protocolo === "TLSv1.3" || tlsInfo.protocolo === "TLSv1.2";
-  const caaEmisores = caa.map((c) => c.issue).filter(Boolean).join(", ");
+  const caaEmisores = caa.map((c) => c.issue || c.issuewild).filter(Boolean);
+  const caaRestringe = caaEmisores.length > 0;
   const ssl: Check[] = [
     check("Certificado válido", tlsInfo.ok ? "ok" : "fail", tlsInfo.ok ? "Confiable" : "No verificable",
       "Un certificado válido protege la identidad del sitio."),
@@ -238,8 +239,12 @@ export async function analizarDominio(dominio: string): Promise<Reporte> {
       "Renueve antes de que expire para evitar caídas y alertas."),
     check("Versión de TLS", protoOk ? "ok" : "warn", tlsInfo.protocolo || "Desconocida",
       "Use TLS 1.2 o 1.3; versiones anteriores son inseguras."),
-    check("Registro CAA", caa.length > 0 ? "ok" : "warn",
-      caa.length > 0 ? `Restringe a: ${caaEmisores}` : "No configurado",
+    check("Registro CAA", caaRestringe ? "ok" : "warn",
+      caa.length === 0
+        ? "No configurado"
+        : caaRestringe
+          ? `Restringe a: ${caaEmisores.join(", ")}`
+          : "Sin restricción de emisor",
       "CAA limita qué autoridades pueden emitir certificados para su dominio."),
     check("Emisor", tlsInfo.emisor ? "ok" : "warn", tlsInfo.emisor || "Desconocido",
       "Autoridad certificadora que respalda el certificado."),
