@@ -204,6 +204,8 @@ export const servicios = {
   tituloAntes: "Cuatro frentes,",
   tituloResaltado: "un solo responsable",
   cta: "Solicitar diagnóstico →",
+  verDetalle: "Ver qué incluye →",
+  idealLabel: "Ideal para",
   items: [
     {
       numero: "01",
@@ -216,6 +218,28 @@ export const servicios = {
         "Copias verificadas",
         "Soporte continuo",
       ],
+      intro:
+        "La base de todo: redes, servidores y equipos funcionando de forma estable, ordenada y lista para crecer con su operación.",
+      detalles: [
+        {
+          titulo: "Diseño y modernización de redes",
+          descripcion: "Redes cableadas e inalámbricas seguras, segmentadas y documentadas.",
+        },
+        {
+          titulo: "Servidores y virtualización",
+          descripcion: "Plataformas eficientes, con alta disponibilidad donde el negocio lo exige.",
+        },
+        {
+          titulo: "Copias de seguridad verificadas",
+          descripcion: "Respaldos que sí se prueban: su información recuperable cuando importa.",
+        },
+        {
+          titulo: "Administración y soporte",
+          descripcion: "Operación diaria de su plataforma con acuerdos de servicio claros.",
+        },
+      ],
+      idealPara:
+        "Empresas que crecieron más rápido que su tecnología y necesitan orden, estabilidad y capacidad de escalar.",
     },
     {
       numero: "02",
@@ -228,6 +252,28 @@ export const servicios = {
         "Monitoreo",
         "Respuesta a incidentes",
       ],
+      intro:
+        "Su información y la de sus clientes protegidas, con vigilancia permanente y respuesta cuando algo pasa.",
+      detalles: [
+        {
+          titulo: "Diagnósticos y auditorías",
+          descripcion: "Evaluamos firewalls, correo, nube y accesos; entregamos un plan priorizado.",
+        },
+        {
+          titulo: "Protección de equipos y correo",
+          descripcion: "Defensa moderna contra virus, secuestro de datos y correos fraudulentos.",
+        },
+        {
+          titulo: "Monitoreo y respuesta",
+          descripcion: "Vigilancia continua y actuación inmediata ante incidentes.",
+        },
+        {
+          titulo: "Cumplimiento y buenas prácticas",
+          descripcion: "Acompañamiento hacia ISO 27001 y políticas a su medida.",
+        },
+      ],
+      idealPara:
+        "Empresas que manejan información sensible de clientes o que ya sufrieron —o temen— un incidente.",
     },
     {
       numero: "03",
@@ -240,6 +286,28 @@ export const servicios = {
         "Asistentes internos",
         "Capacitación",
       ],
+      intro:
+        "Adopte IA con criterio y con la seguridad como base: automatice lo repetitivo y potencie a su equipo, sin poner en riesgo su información.",
+      detalles: [
+        {
+          titulo: "Diagnóstico de oportunidades",
+          descripcion: "Identificamos dónde la IA genera valor real en su operación — y dónde no.",
+        },
+        {
+          titulo: "Automatización de procesos",
+          descripcion: "Tareas repetitivas resueltas con IA: reportes, documentos, clasificación.",
+        },
+        {
+          titulo: "Asistentes a la medida",
+          descripcion: "Herramientas entrenadas en el contexto y los documentos de su empresa.",
+        },
+        {
+          titulo: "Capacitación práctica",
+          descripcion: "Su equipo usando IA de forma productiva y segura desde la primera semana.",
+        },
+      ],
+      idealPara:
+        "Empresas que quieren aprovechar la IA pero no saben por dónde empezar ni cómo hacerlo sin exponer su información.",
     },
     {
       numero: "04",
@@ -252,6 +320,28 @@ export const servicios = {
         "Evidencia para auditoría",
         "Capacitación",
       ],
+      intro:
+        "Traducimos la norma a pasos concretos que su equipo puede sostener, con evidencia lista para clientes y auditores.",
+      detalles: [
+        {
+          titulo: "Análisis de brecha ISO 27001",
+          descripcion: "Dónde está hoy frente a la norma y qué falta para cerrar la brecha.",
+        },
+        {
+          titulo: "Políticas a la medida",
+          descripcion: "Políticas y procedimientos claros, aplicables a su operación real.",
+        },
+        {
+          titulo: "Evidencia para auditoría",
+          descripcion: "Documentación y registros listos para responder a clientes o auditores.",
+        },
+        {
+          titulo: "Capacitación",
+          descripcion: "Su equipo entiende y sostiene las buenas prácticas en el día a día.",
+        },
+      ],
+      idealPara:
+        "Empresas a las que un cliente o una auditoría les exige demostrar cumplimiento.",
     },
   ],
 } as const;
