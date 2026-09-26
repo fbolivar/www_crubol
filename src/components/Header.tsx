@@ -61,18 +61,22 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ButtonLink
-            variante="contorno-oscuro"
-            href={nav.portal.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex"
-          >
-            {nav.portal.label}
-          </ButtonLink>
-          <Button variante="menta" onClick={() => abrir()} className="hidden sm:inline-flex">
-            {nav.cta}
-          </Button>
+          {/* Los contenedores controlan la visibilidad (el botón base es inline-flex). */}
+          <span className="hidden md:inline-flex">
+            <ButtonLink
+              variante="contorno-oscuro"
+              href={nav.portal.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {nav.portal.label}
+            </ButtonLink>
+          </span>
+          <span className="hidden sm:inline-flex">
+            <Button variante="menta" onClick={() => abrir()}>
+              {nav.cta}
+            </Button>
+          </span>
           <button
             type="button"
             className="rounded-lg p-2 text-texto lg:hidden"
