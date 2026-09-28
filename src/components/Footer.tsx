@@ -1,13 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useC, useIdioma } from "@/i18n";
 import { AbrirDiagnostico } from "./AbrirDiagnostico";
 
 export function Footer() {
   const { pie, empresa } = useC();
   const idioma = useIdioma();
-  const hrefPriv = idioma === "en" ? "/politica-privacidad?lang=en" : "/politica-privacidad";
+  const pathname = usePathname();
+  const home = idioma === "en" ? "/en" : "/";
+  const hrefPriv = idioma === "en" ? "/en/privacy-policy" : "/politica-privacidad";
+  // En la home los enlaces de sección son anclas de la misma página; en otras
+  // páginas (política) deben apuntar a la home del idioma: /#servicios, /en#servicios.
+  const enHome = pathname === "/" || pathname === "/en";
+  const hrefSeccion = (href: string) =>
+    href.startsWith("#") && !enHome ? `${home}${href}` : href;
   return (
     <footer className="border-t border-white/10 bg-abismo">
       <div className="mx-auto max-w-6xl px-4 py-14">
@@ -34,7 +42,7 @@ export function Footer() {
                 {col.enlaces.map((e) => (
                   <li key={e.label}>
                     <a
-                      href={e.href}
+                      href={hrefSeccion(e.href)}
                       className="text-sm text-niebla transition-colors hover:text-texto"
                     >
                       {e.label}

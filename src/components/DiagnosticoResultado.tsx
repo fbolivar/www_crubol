@@ -304,7 +304,7 @@ function FormularioInforme({
     );
   }
 
-  const hrefPriv = home === "/en" ? "/politica-privacidad?lang=en" : "/politica-privacidad";
+  const hrefPriv = home === "/en" ? "/en/privacy-policy" : "/politica-privacidad";
 
   return (
     <form onSubmit={onSubmit} className="mt-8 rounded-3xl border border-cian/30 bg-gradient-to-b from-profundo to-abismo p-6 sm:p-8">

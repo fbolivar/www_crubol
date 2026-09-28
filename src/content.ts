@@ -660,7 +660,8 @@ export const politica = {
     {
       titulo: "1. Responsable del tratamiento",
       parrafos: [
-        `${empresa.nombre}, sociedad identificada con NIT ${empresa.nit} y matrícula ${empresa.matricula} de la ${empresa.camara}, con domicilio en ${empresa.ciudad}, Colombia. Correo de contacto para asuntos de datos personales: ${empresa.correo}.`,
+        `${empresa.nombre}, sociedad identificada con NIT ${empresa.nit} y matrícula ${empresa.matricula} de la ${empresa.camara}, con domicilio en ${empresa.ciudad}, Colombia.`,
+        `Área responsable de atender consultas y reclamos sobre datos personales: Área Administrativa – Protección de Datos. Canales de contacto: correo electrónico ${empresa.correo} y teléfono ${empresa.telefono}.`,
       ],
     },
     {
@@ -690,49 +691,55 @@ export const politica = {
     {
       titulo: "5. Canales de contacto y terceros",
       parrafos: [
-        "El contacto se realiza por correo electrónico y por WhatsApp. WhatsApp es un servicio operado por Meta Platforms, Inc.; al comunicarse con nosotros por ese medio, sus datos también se sujetan a las políticas de privacidad de dicho proveedor. Este sitio no utiliza cookies de rastreo publicitario ni herramientas de analítica que identifiquen individualmente a los visitantes.",
+        "Nos comunicamos por correo electrónico y por WhatsApp. WhatsApp es un servicio operado por Meta Platforms, Inc.; al comunicarse con nosotros por ese medio, sus datos también se sujetan a las políticas de privacidad de dicho proveedor. Este sitio no utiliza cookies de rastreo publicitario ni herramientas de analítica que identifiquen individualmente a los visitantes.",
       ],
     },
     {
-      titulo: "6. Conservación de los datos",
+      titulo: "6. Encargados y transmisión internacional de datos",
       parrafos: [
-        "Conservamos sus datos personales durante el tiempo necesario para atender su solicitud y mantener la relación comercial o de servicio, y por el término adicional que exijan las obligaciones legales aplicables. Una vez cumplidas las finalidades y vencidos dichos términos, procederemos a su supresión segura.",
+        "Para operar este sitio y atender sus solicitudes nos apoyamos en proveedores tecnológicos que actúan como encargados del tratamiento —en particular, servicios de alojamiento web y de correo electrónico— que pueden almacenar o procesar la información en servidores ubicados fuera de Colombia. Estas transmisiones se realizan con el único fin de prestar el servicio y bajo estándares de seguridad y confidencialidad adecuados.",
+        "Al aceptar esta política, usted autoriza la transmisión internacional de sus datos a dichos encargados, conforme a la Ley 1581 de 2012 y al Decreto 1074 de 2015. No realizamos transferencias de datos a terceros con fines comerciales.",
       ],
     },
     {
-      titulo: "7. Derechos del titular",
+      titulo: "7. Conservación de los datos",
+      parrafos: [
+        "Conservamos sus datos personales durante el tiempo necesario para atender su solicitud y mantener la relación comercial o de servicio. Como referencia, conservamos los datos de contacto hasta dos (2) años después del último contacto, salvo que una obligación legal exija un período distinto. Cumplidas las finalidades y vencidos dichos términos, procedemos a su supresión segura.",
+      ],
+    },
+    {
+      titulo: "8. Derechos del titular",
       parrafos: ["Como titular de sus datos personales, usted tiene derecho a:"],
       lista: [
-        "Conocer, actualizar y rectificar sus datos personales.",
+        "Conocer, actualizar y rectificar sus datos personales de forma gratuita.",
         "Solicitar prueba de la autorización otorgada.",
         "Ser informado sobre el uso que se ha dado a sus datos.",
         "Revocar la autorización y/o solicitar la supresión de sus datos, cuando proceda.",
-        "Acceder de forma gratuita a sus datos personales.",
-        "Presentar quejas ante la Superintendencia de Industria y Comercio (SIC).",
+        "Presentar quejas ante la Superintendencia de Industria y Comercio (SIC), una vez agotado el trámite de consulta o reclamo ante Crubol.",
       ],
     },
     {
-      titulo: "8. Cómo ejercer sus derechos",
+      titulo: "9. Cómo ejercer sus derechos",
       parrafos: [
         `Puede ejercer sus derechos escribiendo a ${empresa.correo}, indicando su nombre, el derecho que desea ejercer y la información de contacto. Atenderemos las consultas en un término máximo de diez (10) días hábiles y los reclamos en un término máximo de quince (15) días hábiles, conforme a la Ley 1581 de 2012.`,
       ],
     },
     {
-      titulo: "9. Seguridad de la información",
+      titulo: "10. Seguridad de la información",
       parrafos: [
-        "Adoptamos medidas técnicas, humanas y administrativas razonables para proteger sus datos personales frente a acceso no autorizado, pérdida, alteración o divulgación indebida.",
+        "Implementamos medidas técnicas, humanas y administrativas razonables para proteger sus datos personales frente a acceso no autorizado, pérdida, alteración o divulgación indebida.",
       ],
     },
     {
-      titulo: "10. Vigencia y cambios",
+      titulo: "11. Vigencia y cambios",
       parrafos: [
         "La presente política rige a partir de su publicación y puede ser actualizada para reflejar cambios legales u operativos. Cualquier modificación sustancial se informará a través de este sitio web.",
       ],
     },
     {
-      titulo: "11. Contacto",
+      titulo: "12. Contacto",
       parrafos: [
-        `Para cualquier inquietud relacionada con el tratamiento de sus datos personales, escríbanos a ${empresa.correo}.`,
+        `Para cualquier consulta o solicitud relacionada con el tratamiento de sus datos personales, escríbanos a ${empresa.correo}.`,
       ],
     },
   ],

@@ -292,7 +292,7 @@ export function WhatsAppProvider({ children }: { children: ReactNode }) {
                   <p className="text-center text-xs text-niebla">
                     {whatsappForm.legalAntes}{" "}
                     <Link
-                      href={idioma === "en" ? "/politica-privacidad?lang=en" : "/politica-privacidad"}
+                      href={idioma === "en" ? "/en/privacy-policy" : "/politica-privacidad"}
                       className="text-menta underline-offset-2 hover:underline"
                       onClick={cerrar}
                     >

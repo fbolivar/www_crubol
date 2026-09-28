@@ -420,7 +420,8 @@ export const politica = {
     {
       titulo: "1. Data controller",
       parrafos: [
-        `${empresa.nombre}, a company identified with Tax ID ${empresa.nit} and business registration ${empresa.matricula} of the Bogotá Chamber of Commerce, domiciled in ${empresa.ciudad}, Colombia. Contact email for data-protection matters: ${empresa.correo}.`,
+        `${empresa.nombre}, a company identified with Tax ID ${empresa.nit} and business registration ${empresa.matricula} of the Bogotá Chamber of Commerce, domiciled in ${empresa.ciudad}, Colombia.`,
+        `Area responsible for handling inquiries and complaints about personal data: Administrative Area – Data Protection. Contact channels: email ${empresa.correo} and phone ${empresa.telefono}.`,
       ],
     },
     {
@@ -450,49 +451,55 @@ export const politica = {
     {
       titulo: "5. Contact channels and third parties",
       parrafos: [
-        "Contact is made by email and WhatsApp. WhatsApp is a service operated by Meta Platforms, Inc.; when you communicate with us through it, your data is also subject to that provider's privacy policies. This site does not use advertising tracking cookies or analytics tools that individually identify visitors.",
+        "We communicate by email and WhatsApp. WhatsApp is a service operated by Meta Platforms, Inc.; when you communicate with us through it, your data is also subject to that provider's privacy policies. This site does not use advertising tracking cookies or analytics tools that individually identify visitors.",
       ],
     },
     {
-      titulo: "6. Data retention",
+      titulo: "6. Processors and international data transfer",
       parrafos: [
-        "We keep your personal data for as long as necessary to handle your request and maintain the commercial or service relationship, and for the additional period required by applicable legal obligations. Once the purposes are fulfilled and those periods expire, we securely delete it.",
+        "To operate this site and handle your requests, we rely on technology providers that act as data processors —in particular, web hosting and email services— which may store or process the information on servers located outside Colombia. These transfers are carried out solely to provide the service and under appropriate security and confidentiality standards.",
+        "By accepting this policy, you authorize the international transfer of your data to such processors, pursuant to Law 1581 of 2012 and Decree 1074 of 2015. We do not transfer your data to third parties for commercial purposes.",
       ],
     },
     {
-      titulo: "7. Rights of the data subject",
+      titulo: "7. Data retention",
+      parrafos: [
+        "We keep your personal data for as long as necessary to handle your request and maintain the commercial or service relationship. As a reference, we retain contact data for up to two (2) years after the last contact, unless a legal obligation requires a different period. Once the purposes are fulfilled and those periods expire, we securely delete it.",
+      ],
+    },
+    {
+      titulo: "8. Rights of the data subject",
       parrafos: ["As the owner of your personal data, you have the right to:"],
       lista: [
-        "Access, update and rectify your personal data.",
+        "Access, update and rectify your data free of charge.",
         "Request proof of the authorization granted.",
-        "Be informed about the use given to your data.",
+        "Be informed about how your data has been used.",
         "Revoke the authorization and/or request deletion of your data, where applicable.",
-        "Access your personal data free of charge.",
-        "File complaints with the Superintendency of Industry and Commerce (SIC).",
+        "File complaints with the Superintendency of Industry and Commerce (SIC), after exhausting the inquiry or complaint process with Crubol.",
       ],
     },
     {
-      titulo: "8. How to exercise your rights",
+      titulo: "9. How to exercise your rights",
       parrafos: [
         `You may exercise your rights by writing to ${empresa.correo}, stating your name, the right you wish to exercise and your contact information. We will handle inquiries within a maximum of ten (10) business days and complaints within a maximum of fifteen (15) business days, pursuant to Law 1581 of 2012.`,
       ],
     },
     {
-      titulo: "9. Information security",
+      titulo: "10. Information security",
       parrafos: [
-        "We adopt reasonable technical, human and administrative measures to protect your personal data against unauthorized access, loss, alteration or improper disclosure.",
+        "We implement reasonable technical, human and administrative measures to protect your personal data against unauthorized access, loss, alteration or improper disclosure.",
       ],
     },
     {
-      titulo: "10. Term and changes",
+      titulo: "11. Effective date and changes",
       parrafos: [
         "This policy is effective from its publication and may be updated to reflect legal or operational changes. Any substantial modification will be communicated through this website.",
       ],
     },
     {
-      titulo: "11. Contact",
+      titulo: "12. Contact",
       parrafos: [
-        `For any concern related to the processing of your personal data, write to us at ${empresa.correo}.`,
+        `For any question or request related to the processing of your personal data, write to us at ${empresa.correo}.`,
       ],
     },
   ],
