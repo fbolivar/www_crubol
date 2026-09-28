@@ -180,15 +180,15 @@ export const nosotros = {
     dato: `${empresa.nombre} · NIT ${empresa.nit} · Matrícula ${empresa.matricula}, ${empresa.camara}.`,
     sello: "+25 años de experiencia combinada",
   },
-  tituloAntes: "Su operación tecnológica,",
-  tituloResaltado: "bajo criterio experto",
+  tituloAntes: "Un equipo experto en",
+  tituloResaltado: "ciberseguridad e infraestructura",
   apertura:
-    "La mayoría de las empresas medianas descubre el estado real de su tecnología el día que se detiene la operación. No por descuido: porque nadie tenía el tiempo ni el criterio para revisarla antes. Crubol existe para ocupar ese lugar.",
+    "Somos un equipo con más de 25 años de experiencia combinada en ciberseguridad e infraestructura. Entendemos cómo optimizar su tecnología mientras la protegemos de amenazas, y cómo traducir lo técnico en decisiones para su negocio. Ese criterio es el que ponemos a su servicio.",
   puntos: [
-    "Diagnóstico con evidencia, no con supuestos.",
-    "Prioridades claras: primero lo que detiene la operación.",
-    "Informes que se entienden en una junta directiva.",
-    "Los mismos socios que diseñan son quienes responden.",
+    "Especialistas en ciberseguridad, redes, servidores y continuidad.",
+    "Certificación ISO 27001:2022 y formación de posgrado en seguridad.",
+    "Criterio para decidir qué protege su negocio y qué puede esperar.",
+    "Quien responde es experto en la materia, no una mesa de turno.",
   ],
   cta: "Conversemos su caso →",
 } as const;

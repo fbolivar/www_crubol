@@ -161,15 +161,15 @@ export const nosotros = {
     dato: `${empresa.nombre} · Tax ID ${empresa.nit} · Business Reg. ${empresa.matricula}, Bogotá Chamber of Commerce.`,
     sello: "+25 years of combined experience",
   },
-  tituloAntes: "Your technology operation,",
-  tituloResaltado: "under expert judgment",
+  tituloAntes: "An expert team in",
+  tituloResaltado: "cybersecurity and infrastructure",
   apertura:
-    "Most mid-sized companies discover the real state of their technology the day operations stop. Not out of neglect: because no one had the time or the judgment to review it before. Crubol exists to fill that role.",
+    "We are a team with over 25 years of combined experience in cybersecurity and infrastructure. We understand how to optimize your technology while protecting it from threats, and how to translate the technical into business decisions. That judgment is what we put at your service.",
   puntos: [
-    "Assessment with evidence, not assumptions.",
-    "Clear priorities: first what stops the operation.",
-    "Reports a board can understand.",
-    "The same partners who design are the ones who answer.",
+    "Specialists in cybersecurity, networks, servers and continuity.",
+    "ISO 27001:2022 certification and postgraduate training in security.",
+    "The judgment to decide what protects your business and what can wait.",
+    "Whoever answers is an expert in the field, not a rotating help desk.",
   ],
   cta: "Let's discuss your case →",
 } as const;
