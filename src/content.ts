@@ -435,7 +435,7 @@ export const proceso = {
       numero: "4",
       dia: "Día 60",
       titulo: "Acompañamos",
-      descripcion: "Nos quedamos vigilando y reportando mes a mes.",
+      descripcion: "Monitoreamos de forma constante y reportamos con evidencia, en lenguaje claro.",
     },
   ],
 } as const;

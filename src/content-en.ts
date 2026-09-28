@@ -291,7 +291,7 @@ export const proceso = {
     { numero: "1", dia: "Day 0", titulo: "We listen", descripcion: "We understand your operation, your risks and what keeps you up at night." },
     { numero: "2", dia: "Day 15", titulo: "We assess", descripcion: "We review with evidence and prioritize by real impact." },
     { numero: "3", dia: "Day 45", titulo: "We implement", descripcion: "We fix the critical first, with a plan you approve." },
-    { numero: "4", dia: "Day 60", titulo: "We stay", descripcion: "We keep watching and reporting month to month." },
+    { numero: "4", dia: "Day 60", titulo: "We stay", descripcion: "We monitor continuously and report with evidence, in plain language." },
   ],
 } as const;
 
