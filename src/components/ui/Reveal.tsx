@@ -14,17 +14,21 @@ export function Reveal({
   delay = 0,
   as = "div",
   className,
+  prioritario = false,
   ...props
 }: {
   children: ReactNode;
   delay?: number;
   as?: ElementType;
   className?: string;
+  /** Contenido above-the-fold: se pinta visible desde el primer render
+   *  (sin gate de opacidad) para no penalizar el LCP. */
+  prioritario?: boolean;
 } & HTMLMotionProps<"div">) {
   const reduce = useReducedMotion();
   const MotionTag = motion[as as "div"];
 
-  if (reduce) {
+  if (reduce || prioritario) {
     const Tag = as as ElementType;
     return (
       <Tag className={className} {...(props as object)}>

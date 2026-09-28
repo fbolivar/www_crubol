@@ -34,21 +34,21 @@ export function Hero() {
         <div className="grid items-center gap-12 pb-12 lg:grid-cols-2 lg:gap-10 lg:pb-16">
           {/* Columna izquierda */}
           <div>
-            <Reveal>
+            <Reveal prioritario>
               <SectionEyebrow icon={<IconRayo />} tono="oscuro">
                 {hero.eyebrow}
               </SectionEyebrow>
             </Reveal>
-            <Reveal delay={0.05}>
+            <Reveal prioritario>
               <h1 className="mt-5 font-display text-4xl font-bold leading-[1.1] tracking-tight text-texto sm:text-5xl lg:text-6xl">
                 {hero.tituloAntes}{" "}
                 <span className="texto-gradiente">{hero.tituloResaltado}</span>
               </h1>
             </Reveal>
-            <Reveal delay={0.1}>
+            <Reveal prioritario>
               <p className="mt-6 max-w-xl text-lg text-niebla">{hero.parrafo}</p>
             </Reveal>
-            <Reveal delay={0.15}>
+            <Reveal prioritario>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button variante="menta" onClick={() => abrir()}>
                   {hero.ctaPrimario}
