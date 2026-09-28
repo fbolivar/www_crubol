@@ -120,7 +120,7 @@ export const hero = {
   ctaSecundario: "Ver servicios",
   confianza: {
     avatares: ["EC", "FB"],
-    texto: "ISO 27001:2022 · +25 años — Atención directa de los socios fundadores",
+    texto: "ISO 27001:2022 · +25 años — Atención directa de expertos en ciberseguridad e infraestructura",
   },
   panel: {
     titulo: "Panel de operación",
@@ -385,7 +385,7 @@ export const porque = {
     {
       numero: "03",
       titulo: "Quien contesta es quien diseñó",
-      descripcion: "Habla con los socios fundadores, no con una mesa de turno.",
+      descripcion: "Habla con expertos en ciberseguridad e infraestructura, no con una mesa de turno. Damos valor a tu negocio.",
     },
     {
       numero: "04",

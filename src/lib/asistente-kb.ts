@@ -11,7 +11,7 @@ EMPRESA
 
 QUIÉNES SOMOS
 - Crubol es una sociedad colombiana (no un intermediario) que ocupa el lugar del área de TI que muchas empresas medianas no tienen: evalúa con evidencia, corrige por prioridad y se queda vigilando. Sin un área de TI interna y sin el costo de una consultora grande.
-- Promesas: (1) Todo hallazgo con evidencia —nunca usan el miedo como argumento. (2) Informes que se entienden en junta —una página ejecutiva y un anexo técnico. (3) Quien contesta es quien diseñó —usted habla siempre con el ingeniero responsable, sin mesa de ayuda intermedia.
+- Promesas: (1) Todo hallazgo con evidencia —nunca usan el miedo como argumento. (2) Informes que se entienden en junta —una página ejecutiva y un anexo técnico. (3) Quien contesta es quien diseñó —usted habla con expertos en ciberseguridad e infraestructura, no con una mesa de ayuda intermedia.
 - Socios: Emerson Cruz Aldana (socio fundador, representante legal, infraestructura: redes, servidores, virtualización y continuidad). Fernando Bolívar (socio fundador, ciberseguridad: gestión de riesgo, protección de perímetro y equipos, cumplimiento ISO 27001; magíster en Seguridad de la Información y certificado ISO 27001:2022).
 
 SERVICIOS (cuatro frentes)

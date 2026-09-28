@@ -271,7 +271,7 @@ export const porque = {
   filas: [
     { numero: "01", titulo: "Every finding, with evidence", descripcion: "No claims without proof. Every point is backed up." },
     { numero: "02", titulo: "Reports understood in the boardroom", descripcion: "The technical translated into decisions and business impact." },
-    { numero: "03", titulo: "Who answers is who designed it", descripcion: "You talk to the founding partners, not a rotating help desk." },
+    { numero: "03", titulo: "Who answers is who designed it", descripcion: "You talk to cybersecurity and infrastructure experts, not a rotating help desk. We add value to your business." },
     { numero: "04", titulo: "We never sell fear", descripcion: "We tell you what's urgent and what can wait, without alarmism." },
   ],
 } as const;
