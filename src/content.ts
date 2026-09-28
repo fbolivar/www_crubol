@@ -362,7 +362,7 @@ export const porque = {
   tituloResaltado: "con evidencia",
   compromisos: [
     { label: "Hallazgos con evidencia", valor: 100 },
-    { label: "Respuesta directa de los socios", valor: 100 },
+    { label: "Respuesta directa de expertos", valor: 100 },
     { label: "Informes claros para dirección", valor: 100 },
   ],
   socio: {
@@ -483,7 +483,7 @@ export const modalidades = {
       tipo: "continuo",
       titulo: "Vigilancia mensual",
       formato: "Acompañamiento continuo",
-      descripcion: "Monitoreo, respuesta y reporte mes a mes, con los socios detrás.",
+      descripcion: "Monitoreo, respuesta y reporte mes a mes, con expertos detrás.",
       incluye: [
         "Monitoreo continuo",
         "Respuesta a incidentes",
@@ -506,7 +506,7 @@ export const diagnostico = {
     "Ingrese su dominio y obtenga una evaluación completamente gratuita. Revisamos su exposición en internet y le decimos, con evidencia, qué conviene corregir primero.",
   placeholder: "su-dominio.com",
   cta: "Solicitar evaluación →",
-  nota: "Gratis y sin compromiso. Le respondemos los socios.",
+  nota: "Gratis y sin compromiso. Le responden expertos.",
   errorDominio: "Ingrese un dominio válido (por ejemplo, empresa.com).",
   linkFooter: "Diagnóstico Infraestructura",
 } as const;
@@ -530,7 +530,7 @@ export const diagnosticoResultado = {
   de100: "de 100",
   resultadoDe: "Resultado de",
   parcialNota:
-    "Este es un análisis parcial y automático. El escaneo profundo de puertos, vulnerabilidades y superficie de exposición lo realizan los socios de forma manual y con su autorización.",
+    "Este es un análisis parcial y automático. El escaneo profundo de puertos, vulnerabilidades y superficie de exposición lo realizan nuestros expertos de forma manual y con su autorización.",
   form: {
     titulo: "Desbloquee su informe completo",
     texto:
@@ -560,7 +560,7 @@ export const diagnosticoResultado = {
     },
     {
       p: "¿Analizan puertos y vulnerabilidades?",
-      r: "El análisis automático es parcial y no intrusivo. El escaneo profundo de puertos, vulnerabilidades y superficie de exposición lo realizan los socios de forma manual y con su autorización.",
+      r: "El análisis automático es parcial y no intrusivo. El escaneo profundo de puertos, vulnerabilidades y superficie de exposición lo realizan nuestros expertos de forma manual y con su autorización.",
     },
     {
       p: "¿Sirve para cualquier dominio?",
@@ -568,7 +568,7 @@ export const diagnosticoResultado = {
     },
     {
       p: "¿Es una auditoría profesional?",
-      r: "No. Es un chequeo automático orientativo. Una auditoría formal, con evidencia y alcance definido, es un servicio aparte que ejecutan los socios.",
+      r: "No. Es un chequeo automático orientativo. Una auditoría formal, con evidencia y alcance definido, es un servicio aparte que ejecutan nuestros expertos.",
     },
   ],
   aviso:
@@ -583,7 +583,7 @@ export const contacto = {
   tituloAntes: "Empecemos por",
   tituloResaltado: "un diagnóstico gratis",
   parrafo:
-    "Cuéntenos en qué está su operación. Le respondemos los socios, sin intermediarios.",
+    "Cuéntenos en qué está su operación. Le responden expertos, sin intermediarios.",
   datos: [
     { label: "Correo", valor: empresa.correo, tipo: "email" as const },
     { label: "Cobertura", valor: `${empresa.ciudad} · ${empresa.cobertura}`, tipo: "texto" as const },

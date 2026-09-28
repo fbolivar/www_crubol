@@ -85,7 +85,7 @@ export function ContactForm() {
           ¡Mensaje enviado!
         </h3>
         <p className="mt-2 text-gris">
-          Gracias por escribirnos. Le respondemos los socios en breve.
+          Gracias por escribirnos. Le responden nuestros expertos en breve.
         </p>
         <button
           type="button"

@@ -32,7 +32,7 @@ export const diagnosticoResultado = {
   de100: "of 100",
   resultadoDe: "Result for",
   parcialNota:
-    "This is a partial, automated analysis. Deep scanning of ports, vulnerabilities and exposure surface is performed by the partners manually and with your authorization.",
+    "This is a partial, automated analysis. Deep scanning of ports, vulnerabilities and exposure surface is performed by our experts manually and with your authorization.",
   form: {
     titulo: "Unlock your full report",
     texto:
@@ -62,7 +62,7 @@ export const diagnosticoResultado = {
     },
     {
       p: "Do you scan ports and vulnerabilities?",
-      r: "The automated analysis is partial and non-intrusive. Deep scanning of ports, vulnerabilities and exposure surface is performed by the partners manually and with your authorization.",
+      r: "The automated analysis is partial and non-intrusive. Deep scanning of ports, vulnerabilities and exposure surface is performed by our experts manually and with your authorization.",
     },
     {
       p: "Does it work for any domain?",
@@ -70,7 +70,7 @@ export const diagnosticoResultado = {
     },
     {
       p: "Is it a professional audit?",
-      r: "No. It's an orientation-only automated check. A formal audit, with evidence and defined scope, is a separate service performed by the partners.",
+      r: "No. It's an orientation-only automated check. A formal audit, with evidence and defined scope, is a separate service performed by our experts.",
     },
   ],
   aviso:
@@ -259,7 +259,7 @@ export const porque = {
   tituloResaltado: "with evidence",
   compromisos: [
     { label: "Findings with evidence", valor: 100 },
-    { label: "Direct response from the partners", valor: 100 },
+    { label: "Direct response from experts", valor: 100 },
     { label: "Clear reports for management", valor: 100 },
   ],
   socio: {
@@ -325,7 +325,7 @@ export const modalidades = {
       tipo: "continuo",
       titulo: "Monthly watch",
       formato: "Ongoing support",
-      descripcion: "Monitoring, response and a monthly report, with the partners behind it.",
+      descripcion: "Monitoring, response and a monthly report, with experts behind it.",
       incluye: ["Continuous monitoring", "Incident response", "Monthly report", "Prioritized improvement"],
       destacado: false,
     },
@@ -340,7 +340,7 @@ export const diagnostico = {
     "Enter your domain and get a completely free assessment. We review your exposure on the internet and tell you, with evidence, what to fix first.",
   placeholder: "your-domain.com",
   cta: "Request assessment →",
-  nota: "Free and no commitment. The partners reply.",
+  nota: "Free and no commitment. Experts reply.",
   errorDominio: "Enter a valid domain (for example, company.com).",
   linkFooter: "Infrastructure Diagnostic",
 } as const;
@@ -349,7 +349,7 @@ export const contacto = {
   eyebrow: "Let's talk",
   tituloAntes: "Let's start with",
   tituloResaltado: "a free assessment",
-  parrafo: "Tell us where your operation stands. The partners reply, no middlemen.",
+  parrafo: "Tell us where your operation stands. Experts reply, no middlemen.",
   datos: [
     { label: "Email", valor: empresa.correo, tipo: "email" as const },
     { label: "Coverage", valor: `${empresa.ciudad} · Across Colombia`, tipo: "texto" as const },
