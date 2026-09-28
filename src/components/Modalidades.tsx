@@ -54,11 +54,11 @@ export function Modalidades() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 flex flex-wrap justify-center gap-5">
           {visibles.map((m) => (
             <article
               key={m.titulo}
-              className={`group relative flex flex-col rounded-3xl p-7 transition-all duration-300 ease-marca hover:-translate-y-2 ${
+              className={`group relative flex w-full flex-col rounded-3xl p-7 transition-all duration-300 ease-marca hover:-translate-y-2 sm:w-[340px] ${
                 m.destacado
                   ? "border-2 border-teal bg-tinta text-texto shadow-xl"
                   : "border border-linea bg-papel"
@@ -104,7 +104,7 @@ export function Modalidades() {
                     : "border border-teal text-teal hover:bg-teal hover:text-white"
                 }`}
               >
-                Hablemos de esta opción
+                {modalidades.cta}
               </button>
             </article>
           ))}

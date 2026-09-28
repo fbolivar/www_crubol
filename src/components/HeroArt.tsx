@@ -79,7 +79,7 @@ export function HeroArt() {
       >
         <Image
           src="/marca/crubol-isotipo.png"
-          alt="Isotipo de Crubol Technology"
+          alt={hero.altIsotipo}
           width={798}
           height={798}
           priority

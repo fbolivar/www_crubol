@@ -118,6 +118,7 @@ export const hero = {
     "Infraestructura, ciberseguridad e inteligencia artificial para empresas medianas en Colombia. Evaluamos con evidencia, corregimos por prioridad y nos quedamos vigilando.",
   ctaPrimario: "Diagnóstico gratis →",
   ctaSecundario: "Ver servicios",
+  altIsotipo: "Isotipo de Crubol Technology",
   confianza: {
     avatares: ["EC", "FB"],
     texto: "ISO 27001:2022 · +25 años — Atención directa de expertos en ciberseguridad e infraestructura",
@@ -180,6 +181,11 @@ export const nosotros = {
     dato: `${empresa.nombre} · NIT ${empresa.nit} · Matrícula ${empresa.matricula}, ${empresa.camara}.`,
     sello: "+25 años de experiencia combinada",
   },
+  selloNumero: "+25",
+  selloTexto: "años de experiencia combinada",
+  whatsapp: "Escríbanos por WhatsApp",
+  altPrincipal: "Atención directa de nuestros expertos",
+  altSecundaria: "Equipo de Crubol en sesión de diagnóstico",
   tituloAntes: "Un equipo experto en",
   tituloResaltado: "ciberseguridad e infraestructura",
   apertura:
@@ -451,6 +457,7 @@ export const modalidades = {
     { id: "puntual", label: "Puntual" },
     { id: "continuo", label: "Continuo" },
   ],
+  cta: "Hablemos de esta opción",
   items: [
     {
       tipo: "puntual",

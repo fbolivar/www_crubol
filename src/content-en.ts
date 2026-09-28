@@ -10,7 +10,7 @@ export { empresa, whatsapp } from "./content";
 export const seo = {
   title: "Crubol Technology · IT & cybersecurity solutions in Bogotá",
   description:
-    "Infrastructure, cybersecurity and artificial intelligence for mid-sized companies in Colombia. We assess with evidence, fix by priority and stay watching.",
+    "Infrastructure, cybersecurity and artificial intelligence for mid-sized companies in Colombia. We assess with evidence, fix by priority and keep watch.",
   url: "https://crubol.com.co",
 } as const;
 
@@ -78,11 +78,11 @@ export const diagnosticoResultado = {
 } as const;
 
 export const opcionesInteres = [
-  "I don't know the state of my technology",
+  "We don't know the state of our technology",
   "We had an incident and don't want a repeat",
-  "I have a provider, but they don't respond in time",
-  "A client or audit requires compliance from me",
-  "I want to use AI without exposing my information",
+  "We have a provider, but they don't respond in time",
+  "A client or auditor requires us to be compliant",
+  "We want to use AI without exposing our information",
 ] as const;
 
 export const whatsappForm = {
@@ -140,9 +140,10 @@ export const hero = {
   tituloAntes: "Technology that keeps your operation running,",
   tituloResaltado: "every day",
   parrafo:
-    "Infrastructure, cybersecurity and artificial intelligence for mid-sized companies in Colombia. We assess with evidence, fix by priority and stay watching.",
+    "Infrastructure, cybersecurity and artificial intelligence for mid-sized companies in Colombia. We assess with evidence, fix by priority and keep watch.",
   ctaPrimario: "Free assessment →",
   ctaSecundario: "See services",
+  altIsotipo: "Crubol Technology icon",
   confianza: heroEs.confianza,
   panel: heroEs.panel,
   chips: [
@@ -161,10 +162,15 @@ export const nosotros = {
     dato: `${empresa.nombre} · Tax ID ${empresa.nit} · Business Reg. ${empresa.matricula}, Bogotá Chamber of Commerce.`,
     sello: "+25 years of combined experience",
   },
-  tituloAntes: "An expert team in",
-  tituloResaltado: "cybersecurity and infrastructure",
+  selloNumero: "+25",
+  selloTexto: "years of combined experience",
+  whatsapp: "Message us on WhatsApp",
+  altPrincipal: "Direct support from Crubol's experts",
+  altSecundaria: "Crubol team in an assessment session",
+  tituloAntes: "A team of",
+  tituloResaltado: "cybersecurity & infrastructure experts",
   apertura:
-    "We are a team with over 25 years of combined experience in cybersecurity and infrastructure. We understand how to optimize your technology while protecting it from threats, and how to translate the technical into business decisions. That judgment is what we put at your service.",
+    "We are a team with over 25 years of combined experience in cybersecurity and infrastructure. We understand how to optimize your technology while protecting it from threats, and how to translate technical issues into business decisions. That judgment is what we put at your service.",
   puntos: [
     "Specialists in cybersecurity, networks, servers and continuity.",
     "ISO 27001:2022 certification and postgraduate training in security.",
@@ -177,13 +183,13 @@ export const nosotros = {
 export const contadores = [
   { valor: 25, prefijo: "+", sufijo: "", label: "Years of experience" },
   { valor: 1000, prefijo: "+", sufijo: "", label: "Devices managed" },
-  { valor: 4, prefijo: "", sufijo: "", label: "Service fronts" },
-  { valor: 15, prefijo: "", sufijo: "", label: "Days to the assessment" },
+  { valor: 4, prefijo: "", sufijo: "", label: "Service areas" },
+  { valor: 15, prefijo: "", sufijo: "", label: "Days to assessment results" },
 ] as const;
 
 export const servicios = {
   eyebrow: "What we do",
-  tituloAntes: "Four fronts,",
+  tituloAntes: "Four service areas,",
   tituloResaltado: "one accountable partner",
   cta: "Request assessment →",
   verDetalle: "See what's included →",
@@ -191,7 +197,7 @@ export const servicios = {
   items: [
     {
       numero: "01",
-      titulo: "Infrastructure technology",
+      titulo: "IT infrastructure",
       descripcion:
         "The foundation your company runs on, built not to fail and to recover fast when something happens.",
       items: ["Networks & servers", "Virtualization", "Verified backups", "Ongoing support"],
@@ -238,8 +244,8 @@ export const servicios = {
     {
       numero: "04",
       titulo: "Compliance & best practices",
-      descripcion: "The order clients and audits demand, translated into concrete steps.",
-      items: ["ISO 27001 gap", "Policies", "Audit evidence", "Training"],
+      descripcion: "The structure clients and auditors demand, translated into concrete steps.",
+      items: ["ISO 27001 gap analysis", "Policies", "Audit evidence", "Training"],
       intro:
         "We translate the standard into concrete steps your team can sustain, with evidence ready for clients and auditors.",
       detalles: [
@@ -255,8 +261,8 @@ export const servicios = {
 
 export const porque = {
   eyebrow: "Why Crubol",
-  tituloAntes: "No smoke, no fear,",
-  tituloResaltado: "with evidence",
+  tituloAntes: "No hype, no fear,",
+  tituloResaltado: "just evidence",
   compromisos: [
     { label: "Findings with evidence", valor: 100 },
     { label: "Direct response from experts", valor: 100 },
@@ -270,8 +276,8 @@ export const porque = {
   },
   filas: [
     { numero: "01", titulo: "Every finding, with evidence", descripcion: "No claims without proof. Every point is backed up." },
-    { numero: "02", titulo: "Reports understood in the boardroom", descripcion: "The technical translated into decisions and business impact." },
-    { numero: "03", titulo: "Who answers is who designed it", descripcion: "You talk to cybersecurity and infrastructure experts, not a rotating help desk. We add value to your business." },
+    { numero: "02", titulo: "Reports your board can understand", descripcion: "The technical translated into decisions and business impact." },
+    { numero: "03", titulo: "You talk to the people who built it", descripcion: "You talk to cybersecurity and infrastructure experts, not a rotating help desk. We add value to your business." },
     { numero: "04", titulo: "We never sell fear", descripcion: "We tell you what's urgent and what can wait, without alarmism." },
   ],
 } as const;
@@ -291,18 +297,19 @@ export const proceso = {
     { numero: "1", dia: "Day 0", titulo: "We listen", descripcion: "We understand your operation, your risks and what keeps you up at night." },
     { numero: "2", dia: "Day 15", titulo: "We assess", descripcion: "We review with evidence and prioritize by real impact." },
     { numero: "3", dia: "Day 45", titulo: "We implement", descripcion: "We fix the critical first, with a plan you approve." },
-    { numero: "4", dia: "Day 60", titulo: "We stay", descripcion: "We monitor continuously and report with evidence, in plain language." },
+    { numero: "4", dia: "Day 60", titulo: "We stand by you", descripcion: "We monitor continuously and report with evidence, in plain language." },
   ],
 } as const;
 
 export const modalidades = {
   eyebrow: "How to engage us",
-  tituloAntes: "The scope your",
-  tituloResaltado: "moment needs",
+  tituloAntes: "The right scope for",
+  tituloResaltado: "where you are now",
   pestanas: [
     { id: "puntual", label: "One-time" },
     { id: "continuo", label: "Ongoing" },
   ],
+  cta: "Let's talk about this option",
   items: [
     {
       tipo: "puntual",
@@ -317,7 +324,7 @@ export const modalidades = {
       titulo: "Turnkey project",
       formato: "Project with defined scope",
       descripcion: "We design, fix and implement end to end.",
-      incluye: ["Assessment included", "Priority execution", "Documentation & evidence", "Closeout with training"],
+      incluye: ["Assessment included", "Execution by priority", "Documentation & evidence", "Closeout with training"],
       destacado: true,
       cinta: "Most requested",
     },
@@ -342,7 +349,7 @@ export const diagnostico = {
   cta: "Request assessment →",
   nota: "Free and no commitment. Experts reply.",
   errorDominio: "Enter a valid domain (for example, company.com).",
-  linkFooter: "Infrastructure Diagnostic",
+  linkFooter: "Infrastructure Assessment",
 } as const;
 
 export const contacto = {

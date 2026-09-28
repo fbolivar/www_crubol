@@ -22,7 +22,7 @@ export function Nosotros() {
             {/* Foto principal */}
             <DuotoneImage
               src="/fotos/soporte.jpg"
-              alt="Atención directa de los socios de Crubol"
+              alt={nosotros.altPrincipal}
               className="aspect-[4/3] rounded-3xl border border-linea shadow-xl"
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
@@ -30,15 +30,17 @@ export function Nosotros() {
             <div className="absolute -bottom-10 -right-4 w-1/2 sm:-right-8">
               <DuotoneImage
                 src="/fotos/consultoria.jpg"
-                alt="Equipo de Crubol en sesión de diagnóstico"
+                alt={nosotros.altSecundaria}
                 className="aspect-square rounded-2xl border-4 border-papel shadow-2xl"
                 sizes="(max-width: 1024px) 50vw, 22vw"
               />
             </div>
             {/* Sello flotante */}
             <div className="absolute -left-3 -top-5 rounded-2xl bg-teal px-5 py-3 text-white shadow-lg">
-              <span className="block font-display text-2xl font-bold leading-none">+25</span>
-              <span className="text-[11px] leading-tight">años de experiencia combinada</span>
+              <span className="block font-display text-2xl font-bold leading-none">
+                {nosotros.selloNumero}
+              </span>
+              <span className="text-[11px] leading-tight">{nosotros.selloTexto}</span>
             </div>
             <HexOutline className="-right-6 top-6 h-16 w-16" color="rgba(11,114,133,0.5)" />
           </div>
@@ -95,7 +97,7 @@ export function Nosotros() {
                 className="inline-flex items-center gap-2 text-sm font-medium text-teal transition-colors hover:text-tinta"
               >
                 <IconWhatsApp className="h-5 w-5" />
-                Escríbanos por WhatsApp
+                {nosotros.whatsapp}
               </button>
             </div>
           </Reveal>
